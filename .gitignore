@@ -1,0 +1,29 @@
+﻿# Virtual environments
+.venv/
+env/
+venv/
+
+# Credentials & Tokens (CRITICAL)
+API Tokens/
+*.token
+*.env
+*.key
+credentials.json
+
+# Binaries & Large Media
+*.mp4
+*.avi
+*.mov
+tools/
+
+# Temporary & Lock files
+~$*
+*.tmp
+*.log
+scratch/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
