@@ -112,22 +112,28 @@
       -webkit-backdrop-filter: blur(36px);
     }
 
-    /* Magnifier Lens (From Reference Image 1) */
+    /* Monopo Optical Magnifier Lens & Chromatic Binary Effect (Reference Image 2) */
     #magnifier-orb {
       position: absolute;
-      width: 140px;
-      height: 140px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
       pointer-events: none;
-      border: 1.5px solid rgba(255, 255, 255, 0.35);
-      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.18), rgba(0,0,0,0.5) 80%);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 2px 5px rgba(255,255,255,0.5), inset 0 -2px 5px rgba(0,0,0,0.8);
-      backdrop-filter: blur(2px) contrast(140%) brightness(120%);
-      -webkit-backdrop-filter: blur(2px) contrast(140%) brightness(120%);
+      border: 1.5px solid rgba(255, 255, 255, 0.45);
+      background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.02) 60%, rgba(0,0,0,0.3) 100%);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.85), inset 0 2px 4px rgba(255,255,255,0.6), inset 0 -3px 8px rgba(0,0,0,0.8), 0 0 25px rgba(245,158,11,0.15);
+      backdrop-filter: contrast(120%) brightness(110%);
+      -webkit-backdrop-filter: contrast(120%) brightness(110%);
       transform: translate(-50%, -50%);
-      transition: width 0.3s, height 0.3s, opacity 0.3s;
-      z-index: 40;
+      transition: opacity 0.25s ease-out;
+      z-index: 50;
       opacity: 0;
+    }
+
+    /* Monopo London Chromatic Aberration on Binary Magnification */
+    .chromatic-lens-text {
+      text-shadow: 2.8px 0px rgba(255, 35, 90, 0.95), -2.8px 0px rgba(0, 235, 255, 0.95);
+      letter-spacing: -0.01em;
     }
 
     /* Scroll-Driven Reveal Animations */
@@ -166,21 +172,24 @@
     <canvas id="chromatic-canvas" class="w-full h-full opacity-65"></canvas>
   </div>
 
-  <!-- Interactive Magnifier Orb with Mechanical & Binary Telemetry HUD -->
-  <div id="magnifier-orb" class="overflow-hidden select-none">
-    <!-- Animated Outer Reticle Rings -->
-    <div class="absolute inset-1 rounded-full border border-monopo-amber/30 pointer-events-none"></div>
-    <div class="absolute inset-2.5 rounded-full border border-dashed border-white/25 pointer-events-none animate-spin" style="animation-duration: 25s;"></div>
+  <!-- Interactive Optical Magnifier Lens (Reference Image 2) -->
+  <div id="magnifier-orb" class="overflow-hidden select-none pointer-events-none">
+    <!-- Spherical Glare Highlight -->
+    <div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 via-transparent to-transparent pointer-events-none"></div>
     
-    <!-- Crosshair Target Reticles -->
-    <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[1px] bg-gradient-to-r from-transparent via-monopo-amber/40 to-transparent pointer-events-none"></div>
-    <div class="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[1px] bg-gradient-to-b from-transparent via-monopo-amber/40 to-transparent pointer-events-none"></div>
+    <!-- Rotating Fine Dashed Reticle Ring -->
+    <div class="absolute inset-2 rounded-full border border-dashed border-white/20 pointer-events-none animate-spin" style="animation-duration: 30s;"></div>
+    <div class="absolute inset-1 rounded-full border border-monopo-amber/25 pointer-events-none"></div>
+    
+    <!-- Precision Crosshair Ticks -->
+    <div class="absolute left-1 top-1/2 -translate-y-1/2 w-2 h-[1px] bg-monopo-amber/50"></div>
+    <div class="absolute right-1 top-1/2 -translate-y-1/2 w-2 h-[1px] bg-monopo-amber/50"></div>
+    <div class="absolute top-1 left-1/2 -translate-x-1/2 w-[1px] h-2 bg-monopo-amber/50"></div>
+    <div class="absolute bottom-1 left-1/2 -translate-x-1/2 w-[1px] h-2 bg-monopo-amber/50"></div>
 
-    <!-- Center Telemetry Display -->
-    <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none p-2 text-center z-10">
-      <span id="orb-status" class="text-[8px] font-mono tracking-[0.2em] text-monopo-amber uppercase opacity-90 font-bold mb-0.5">SCAN // MECH</span>
-      <span id="orb-data" class="text-[13px] font-mono font-bold text-white tracking-widest chromatic-text drop-shadow-[0_0_8px_rgba(230,126,34,0.5)]">10110010</span>
-      <span id="orb-coords" class="text-[8px] font-mono text-white/60 tracking-wider mt-1">X:000 Y:000</span>
+    <!-- Micro Lens Status Badge at Bottom Rim -->
+    <div class="absolute bottom-2.5 inset-x-0 flex justify-center pointer-events-none z-20">
+      <span id="orb-lens-tag" class="px-2 py-0.5 rounded-full bg-black/80 border border-white/20 text-[8px] font-mono text-monopo-amber font-bold tracking-widest uppercase">8-BIT BINARY LENS</span>
     </div>
   </div>
 
@@ -218,26 +227,53 @@
     
     <!-- Hero Main Typography with Interactive Lens Trigger -->
     <div class="max-w-5xl my-auto cursor-crosshair group relative" id="hero-lens-area">
-      <!-- Super-Title -->
-      <div class="flex items-center gap-3 mb-6">
-        <span class="text-xs font-mono uppercase tracking-widest text-monopo-amber font-semibold">Precision Hardware & Capital Systems</span>
-        <span class="text-white/20">•</span>
-        <span class="text-xs font-mono uppercase tracking-widest text-white/60">Mechanical Engineering Portfolio</span>
+      <!-- English Text Layer -->
+      <div id="hero-english-layer" class="relative z-10 select-none">
+        <!-- Super-Title -->
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-xs font-mono uppercase tracking-widest text-monopo-amber font-semibold">Precision Hardware & Capital Systems</span>
+          <span class="text-white/20">•</span>
+          <span class="text-xs font-mono uppercase tracking-widest text-white/60">Mechanical Engineering Portfolio</span>
+        </div>
+
+        <!-- Giant Monopo-Style Statement -->
+        <h1 class="font-display text-4xl sm:text-7xl md:text-8xl font-extrabold tracking-tight text-white leading-[1.03]">
+          Engineering <br class="hidden sm:inline" />
+          <span class="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/70 hover:chromatic-text transition-all duration-300">
+            capital scale
+          </span><br />
+          from concept to line.
+        </h1>
+
+        <p class="text-base sm:text-xl text-white/70 font-light max-w-2xl mt-8 leading-relaxed">
+          Rohendhar (Ro) — Mechanical Engineering senior with a Minor in Project Management at the University of Cincinnati (3.68 GPA). 
+          <span class="text-white font-normal">5 full industrial rotations</span> across Nucor, Cummins, and Ischebeck Titan.
+        </p>
       </div>
 
-      <!-- Giant Monopo-Style Statement -->
-      <h1 class="font-display text-4xl sm:text-7xl md:text-8xl font-extrabold tracking-tight text-white leading-[1.03] select-none">
-        Engineering <br class="hidden sm:inline" />
-        <span class="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/70 hover:chromatic-text transition-all duration-300">
-          capital scale
-        </span><br />
-        from concept to line.
-      </h1>
+      <!-- Superimposed Binary Translation Layer (Revealed strictly inside the circular lens with chromatic aberration) -->
+      <div id="hero-binary-overlay" class="absolute inset-0 z-20 pointer-events-none select-none overflow-hidden" style="clip-path: circle(0px at 0px 0px); -webkit-clip-path: circle(0px at 0px 0px); background: #08080a;">
+        <div id="hero-binary-content" class="w-full h-full transition-transform duration-75">
+          <!-- Super-Title in Binary -->
+          <div class="flex items-center gap-3 mb-6">
+            <span class="text-xs font-mono uppercase tracking-widest text-monopo-amber font-bold chromatic-lens-text">01010000 01010010 01000101 01000011 01001001 01010011 01001001 01001111 01001110</span>
+            <span class="text-white/30">•</span>
+            <span class="text-xs font-mono uppercase tracking-widest text-monopo-blue font-bold chromatic-lens-text">01001101 01000101 01000011 01001000</span>
+          </div>
 
-      <p class="text-base sm:text-xl text-white/70 font-light max-w-2xl mt-8 leading-relaxed">
-        Rohendhar (Ro) — Mechanical Engineering senior with a Minor in Project Management at the University of Cincinnati (3.68 GPA). 
-        <span class="text-white font-normal">5 full industrial rotations</span> across Nucor, Cummins, and Ischebeck Titan.
-      </p>
+          <!-- Giant Heading in Binary (Exact ASCII conversion) -->
+          <h1 class="font-mono text-4xl sm:text-7xl md:text-8xl font-black tracking-tight leading-[1.03]">
+            <span id="binary-line-1" class="text-monopo-amber chromatic-lens-text inline-block">01000101 01101110 01100111</span><br class="hidden sm:inline" />
+            <span id="binary-line-2" class="text-white chromatic-lens-text inline-block">01100011 01100001 01110000 01101001</span><br />
+            <span id="binary-line-3" class="text-monopo-blue chromatic-lens-text inline-block">01100110 01110010 01101111 01101101</span>
+          </h1>
+
+          <!-- Paragraph in Binary -->
+          <p id="binary-para" class="text-base sm:text-xl text-white/80 font-mono font-medium max-w-2xl mt-8 leading-relaxed chromatic-lens-text break-words">
+            01010010 01101111 01101000 01100101 01101110 01100100 01101000 01100001 01110010 00100000 01010101 01000011 00100000 01001101 01000101 01000011 01001000 00100000 01000101 01001110 01000111 00101110
+          </p>
+        </div>
+      </div>
     </div>
 
     <!-- Monopo Triple Sub-Column Footer (Directly Inspired by Reference Image 1) -->
@@ -947,111 +983,98 @@
       });
     });
 
-    // Interactive Magnifying Lens Orb with Dynamic Binary & Mechanical Telemetry HUD
+    // Interactive Monopo Optical Magnifying Lens: English-to-Binary Translation (Reference Image 2)
     const heroArea = document.getElementById('hero-lens-area');
     const orb = document.getElementById('magnifier-orb');
-    const orbStatus = document.getElementById('orb-status');
-    const orbData = document.getElementById('orb-data');
-    const orbCoords = document.getElementById('orb-coords');
+    const binaryOverlay = document.getElementById('hero-binary-overlay');
+    const binaryContent = document.getElementById('hero-binary-content');
+    const bLine1 = document.getElementById('binary-line-1');
+    const bLine2 = document.getElementById('binary-line-2');
+    const bLine3 = document.getElementById('binary-line-3');
 
-    if (heroArea && orb && orbData) {
-      // Real mechanical engineering metrics & telemetry from Rohendhar's industrial co-ops
-      const mechTelemetry = [
-        { status: 'DYNO // POWER', val: '5,000 HP' },
-        { status: 'TORQUE // ROT', val: '3,200 N·m' },
-        { status: 'FEA // STRESS', val: 'σ: 240 MPa' },
-        { status: 'DAMP // IMPACT', val: '-30% SHOCK' },
-        { status: 'HYD // PRESS', val: '2,800 PSI' },
-        { status: 'GD&T // TOL', val: '⌖ 0.025 mm' },
-        { status: 'DRIVE // RPM', val: '1,450 RPM' },
-        { status: 'MODULUS // E', val: '205 GPa' },
-        { status: 'SYS // LOGIC', val: 'AB 5069-L30' },
-        { status: 'CAPEX // BUDGET', val: '$1,000,000' },
-        { status: 'SCALE // SQFT', val: '4.3M SQ.FT' }
-      ];
+    if (heroArea && orb && binaryOverlay && binaryContent) {
+      const baseL1 = "01000101 01101110 01100111";
+      const baseL2 = "01100011 01100001 01110000 01101001";
+      const baseL3 = "01100110 01110010 01101111 01101101";
 
-      function getRandomBinary() {
-        let b = '';
-        for (let i = 0; i < 8; i++) {
-          b += Math.random() > 0.5 ? '1' : '0';
+      function scrambleBits(str) {
+        const arr = str.split('');
+        for (let k = 0; k < 2; k++) {
+          const idx = Math.floor(Math.random() * arr.length);
+          if (arr[idx] === '0') arr[idx] = '1';
+          else if (arr[idx] === '1') arr[idx] = '0';
         }
-        return b;
+        return arr.join('');
       }
 
-      function getRandomHex() {
-        return '0x' + Math.floor(Math.random() * 65535).toString(16).toUpperCase().padStart(4, '0');
-      }
-
-      let tickCount = 0;
-      let mechIndex = 0;
       let activeInterval = null;
-      let isInside = false;
-      let currentRelX = 0;
-      let currentRelY = 0;
+      let isHovering = false;
 
-      function updateOrbContent() {
-        tickCount++;
-        // Cycle between rapid binary streaming, hex buses, and real mechanical telemetry
-        const phase = tickCount % 22;
-        if (phase < 10) {
-          // Rapid binary stream
-          if (orbStatus) orbStatus.textContent = 'RAW // BINARY';
-          orbData.textContent = getRandomBinary();
-        } else if (phase < 14) {
-          // Hex bus address
-          if (orbStatus) orbStatus.textContent = 'BUS // ADDR';
-          orbData.textContent = getRandomHex();
-        } else {
-          // Authentic mechanical engineering readout
-          const item = mechTelemetry[mechIndex % mechTelemetry.length];
-          if (orbStatus) orbStatus.textContent = item.status;
-          orbData.textContent = item.val;
-          if (phase === 21) {
-            mechIndex++;
-          }
+      function startBitShimmer() {
+        if (!activeInterval) {
+          activeInterval = setInterval(() => {
+            if (isHovering) {
+              if (bLine1) bLine1.textContent = scrambleBits(baseL1);
+              if (bLine2) bLine2.textContent = scrambleBits(baseL2);
+              if (bLine3) bLine3.textContent = scrambleBits(baseL3);
+            }
+          }, 85);
         }
+      }
 
-        if (orbCoords) {
-          orbCoords.textContent = `X:${Math.round(currentRelX).toString().padStart(3, '0')} Y:${Math.round(currentRelY).toString().padStart(3, '0')}`;
+      function stopBitShimmer() {
+        if (activeInterval) {
+          clearInterval(activeInterval);
+          activeInterval = null;
         }
+        if (bLine1) bLine1.textContent = baseL1;
+        if (bLine2) bLine2.textContent = baseL2;
+        if (bLine3) bLine3.textContent = baseL3;
       }
 
       document.addEventListener('mousemove', (e) => {
         const rect = heroArea.getBoundingClientRect();
         if (
-          e.clientX >= rect.left - 40 &&
-          e.clientX <= rect.right + 40 &&
-          e.clientY >= rect.top - 40 &&
-          e.clientY <= rect.bottom + 40
+          e.clientX >= rect.left - 20 &&
+          e.clientX <= rect.right + 20 &&
+          e.clientY >= rect.top - 20 &&
+          e.clientY <= rect.bottom + 20
         ) {
+          const relX = e.clientX - rect.left;
+          const relY = e.clientY - rect.top;
+          const lensRadius = 90; // 180px diameter lens
+
+          // 1. Position the spherical optical glass lens
           orb.style.opacity = '1';
           orb.style.left = `${e.pageX}px`;
           orb.style.top = `${e.pageY}px`;
 
-          currentRelX = e.clientX - rect.left;
-          currentRelY = e.clientY - rect.top;
-          updateOrbContent();
+          // 2. Optical translation aperture: clip binary overlay exactly to lens boundary
+          binaryOverlay.style.clipPath = `circle(${lensRadius}px at ${relX}px ${relY}px)`;
+          binaryOverlay.style.webkitClipPath = `circle(${lensRadius}px at ${relX}px ${relY}px)`;
 
-          if (!isInside) {
-            isInside = true;
-            if (!activeInterval) {
-              activeInterval = setInterval(() => {
-                if (isInside) updateOrbContent();
-              }, 80);
-            }
+          // 3. Optical magnification: zoom content centered directly on cursor coordinates
+          binaryContent.style.transformOrigin = `${relX}px ${relY}px`;
+          binaryContent.style.transform = 'scale(1.18)';
+
+          if (!isHovering) {
+            isHovering = true;
+            startBitShimmer();
           }
         } else {
           orb.style.opacity = '0';
-          isInside = false;
-          if (activeInterval) {
-            clearInterval(activeInterval);
-            activeInterval = null;
+          binaryOverlay.style.clipPath = 'circle(0px at 0px 0px)';
+          binaryOverlay.style.webkitClipPath = 'circle(0px at 0px 0px)';
+          binaryContent.style.transform = 'scale(1)';
+          if (isHovering) {
+            isHovering = false;
+            stopBitShimmer();
           }
         }
       });
     }
 
-    // Chromatic Fluid Canvas Wave Animation (Scroll-Reactive Velocity)
+    // Chromatic Fluid Canvas Wave Animation (Enhanced with 2001: A Space Odyssey Cosmic Palette)
     const canvas = document.getElementById('chromatic-canvas');
     const ctx = canvas.getContext('2d');
     let width, height, t = 0;
@@ -1075,7 +1098,7 @@
       scrollSpeed *= 0.92; // smooth decay when scrolling stops
       ctx.clearRect(0, 0, width, height);
 
-      // Deep Blue Fluid Wave (Bottom & Left)
+      // Deep Cobalt Blue Fluid Wave (Bottom & Left)
       const gradBlue = ctx.createRadialGradient(
         width * 0.25 + Math.sin(t * 1.5) * 120,
         height * 0.45 + Math.cos(t) * 100,
@@ -1090,7 +1113,22 @@
       ctx.fillStyle = gradBlue;
       ctx.fillRect(0, 0, width, height);
 
-      // Molten Amber Wave (Top & Right)
+      // 2001: A Space Odyssey Cosmic Violet & Magenta Nebular Wave
+      const gradCosmic = ctx.createRadialGradient(
+        width * 0.5 + Math.sin(t * 0.9) * 160,
+        height * 0.68 + Math.cos(t * 1.1) * 110,
+        30,
+        width * 0.5,
+        height * 0.65,
+        width * 0.58
+      );
+      gradCosmic.addColorStop(0, 'rgba(147, 51, 234, 0.32)'); // electric ultraviolet
+      gradCosmic.addColorStop(0.45, 'rgba(225, 29, 72, 0.16)'); // cosmic magenta flare
+      gradCosmic.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = gradCosmic;
+      ctx.fillRect(0, 0, width, height);
+
+      // Molten Solar Amber Wave (Top & Right)
       const gradAmber = ctx.createRadialGradient(
         width * 0.75 + Math.cos(t * 1.2) * 140,
         height * 0.25 + Math.sin(t * 0.9) * 90,
