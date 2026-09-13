@@ -166,10 +166,21 @@
     <canvas id="chromatic-canvas" class="w-full h-full opacity-65"></canvas>
   </div>
 
-  <!-- Interactive Magnifier Orb (Reference Image 1) -->
-  <div id="magnifier-orb">
-    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <span class="text-[10px] font-mono font-bold text-monopo-amber tracking-widest uppercase">SYS.01</span>
+  <!-- Interactive Magnifier Orb with Mechanical & Binary Telemetry HUD -->
+  <div id="magnifier-orb" class="overflow-hidden select-none">
+    <!-- Animated Outer Reticle Rings -->
+    <div class="absolute inset-1 rounded-full border border-monopo-amber/30 pointer-events-none"></div>
+    <div class="absolute inset-2.5 rounded-full border border-dashed border-white/25 pointer-events-none animate-spin" style="animation-duration: 25s;"></div>
+    
+    <!-- Crosshair Target Reticles -->
+    <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[1px] bg-gradient-to-r from-transparent via-monopo-amber/40 to-transparent pointer-events-none"></div>
+    <div class="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[1px] bg-gradient-to-b from-transparent via-monopo-amber/40 to-transparent pointer-events-none"></div>
+
+    <!-- Center Telemetry Display -->
+    <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none p-2 text-center z-10">
+      <span id="orb-status" class="text-[8px] font-mono tracking-[0.2em] text-monopo-amber uppercase opacity-90 font-bold mb-0.5">SCAN // MECH</span>
+      <span id="orb-data" class="text-[13px] font-mono font-bold text-white tracking-widest chromatic-text drop-shadow-[0_0_8px_rgba(230,126,34,0.5)]">10110010</span>
+      <span id="orb-coords" class="text-[8px] font-mono text-white/60 tracking-wider mt-1">X:000 Y:000</span>
     </div>
   </div>
 
@@ -216,7 +227,7 @@
 
       <!-- Giant Monopo-Style Statement -->
       <h1 class="font-display text-4xl sm:text-7xl md:text-8xl font-extrabold tracking-tight text-white leading-[1.03] select-none">
-        I engineer <br class="hidden sm:inline" />
+        Engineering <br class="hidden sm:inline" />
         <span class="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/70 hover:chromatic-text transition-all duration-300">
           capital scale
         </span><br />
@@ -936,24 +947,106 @@
       });
     });
 
-    // Interactive Magnifying Lens Orb (Reference Image 1)
+    // Interactive Magnifying Lens Orb with Dynamic Binary & Mechanical Telemetry HUD
     const heroArea = document.getElementById('hero-lens-area');
     const orb = document.getElementById('magnifier-orb');
+    const orbStatus = document.getElementById('orb-status');
+    const orbData = document.getElementById('orb-data');
+    const orbCoords = document.getElementById('orb-coords');
 
-    if (heroArea && orb) {
+    if (heroArea && orb && orbData) {
+      // Real mechanical engineering metrics & telemetry from Rohendhar's industrial co-ops
+      const mechTelemetry = [
+        { status: 'DYNO // POWER', val: '5,000 HP' },
+        { status: 'TORQUE // ROT', val: '3,200 N·m' },
+        { status: 'FEA // STRESS', val: 'σ: 240 MPa' },
+        { status: 'DAMP // IMPACT', val: '-30% SHOCK' },
+        { status: 'HYD // PRESS', val: '2,800 PSI' },
+        { status: 'GD&T // TOL', val: '⌖ 0.025 mm' },
+        { status: 'DRIVE // RPM', val: '1,450 RPM' },
+        { status: 'MODULUS // E', val: '205 GPa' },
+        { status: 'SYS // LOGIC', val: 'AB 5069-L30' },
+        { status: 'CAPEX // BUDGET', val: '$1,000,000' },
+        { status: 'SCALE // SQFT', val: '4.3M SQ.FT' }
+      ];
+
+      function getRandomBinary() {
+        let b = '';
+        for (let i = 0; i < 8; i++) {
+          b += Math.random() > 0.5 ? '1' : '0';
+        }
+        return b;
+      }
+
+      function getRandomHex() {
+        return '0x' + Math.floor(Math.random() * 65535).toString(16).toUpperCase().padStart(4, '0');
+      }
+
+      let tickCount = 0;
+      let mechIndex = 0;
+      let activeInterval = null;
+      let isInside = false;
+      let currentRelX = 0;
+      let currentRelY = 0;
+
+      function updateOrbContent() {
+        tickCount++;
+        // Cycle between rapid binary streaming, hex buses, and real mechanical telemetry
+        const phase = tickCount % 22;
+        if (phase < 10) {
+          // Rapid binary stream
+          if (orbStatus) orbStatus.textContent = 'RAW // BINARY';
+          orbData.textContent = getRandomBinary();
+        } else if (phase < 14) {
+          // Hex bus address
+          if (orbStatus) orbStatus.textContent = 'BUS // ADDR';
+          orbData.textContent = getRandomHex();
+        } else {
+          // Authentic mechanical engineering readout
+          const item = mechTelemetry[mechIndex % mechTelemetry.length];
+          if (orbStatus) orbStatus.textContent = item.status;
+          orbData.textContent = item.val;
+          if (phase === 21) {
+            mechIndex++;
+          }
+        }
+
+        if (orbCoords) {
+          orbCoords.textContent = `X:${Math.round(currentRelX).toString().padStart(3, '0')} Y:${Math.round(currentRelY).toString().padStart(3, '0')}`;
+        }
+      }
+
       document.addEventListener('mousemove', (e) => {
         const rect = heroArea.getBoundingClientRect();
         if (
-          e.clientX >= rect.left - 50 &&
-          e.clientX <= rect.right + 50 &&
-          e.clientY >= rect.top - 50 &&
-          e.clientY <= rect.bottom + 50
+          e.clientX >= rect.left - 40 &&
+          e.clientX <= rect.right + 40 &&
+          e.clientY >= rect.top - 40 &&
+          e.clientY <= rect.bottom + 40
         ) {
           orb.style.opacity = '1';
           orb.style.left = `${e.pageX}px`;
           orb.style.top = `${e.pageY}px`;
+
+          currentRelX = e.clientX - rect.left;
+          currentRelY = e.clientY - rect.top;
+          updateOrbContent();
+
+          if (!isInside) {
+            isInside = true;
+            if (!activeInterval) {
+              activeInterval = setInterval(() => {
+                if (isInside) updateOrbContent();
+              }, 80);
+            }
+          }
         } else {
           orb.style.opacity = '0';
+          isInside = false;
+          if (activeInterval) {
+            clearInterval(activeInterval);
+            activeInterval = null;
+          }
         }
       });
     }
