@@ -13,6 +13,10 @@
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- GSAP 3 & ScrollTrigger (GreenSock Animation Platform) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -134,16 +138,9 @@
       overflow: hidden;
     }
 
-    /* Scroll-Driven Reveal Animations */
-    .scroll-reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-    .scroll-reveal.revealed {
-      opacity: 1;
-      transform: translateY(0);
+    /* GSAP Hardware Accelerated Layers */
+    .gsap-reveal {
+      will-change: transform, opacity;
     }
 
     /* 3D Interactive Card Perspective */
@@ -998,36 +995,129 @@
 
   <!-- JavaScript: Canvas Waves, Lens Orb, Modals, 3D Tilt & Scroll Motion -->
   <script>
-    // Scroll Progress Bar Tracker (Throttled with requestAnimationFrame for 120 FPS)
-    let scrollTicking = false;
-    window.addEventListener('scroll', () => {
-      if (!scrollTicking) {
-        requestAnimationFrame(() => {
-          const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-          const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-          const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
-          const bar = document.getElementById('scroll-progress');
-          if (bar) bar.style.width = `${scrolled}%`;
-          scrollTicking = false;
-        });
-        scrollTicking = true;
-      }
-    }, { passive: true });
+    // Initialize GSAP & ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
 
-    // Scroll-Triggered Smooth Section & Card Reveals
-    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -40px 0px' };
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.glass-card, .project-card, section h2, #fluted-section').forEach(el => {
-      el.classList.add('scroll-reveal');
-      revealObserver.observe(el);
+    // 1. Scroll-Driven Progress Bar (Scrubbed with GSAP ScrollTrigger)
+    gsap.to('#scroll-progress', {
+      scrollTrigger: {
+        trigger: 'body',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 0.15
+      },
+      width: '100%',
+      ease: 'none'
     });
+
+    // 2. Cinematic Hero Sequence Timeline
+    const heroTl = gsap.timeline({
+      defaults: { ease: 'power3.out' }
+    });
+
+    heroTl
+      .from('header', { y: -30, autoAlpha: 0, duration: 0.8 })
+      .from('#hero-english-layer > div:nth-child(1)', { y: 25, autoAlpha: 0, duration: 0.6 }, '-=0.4')
+      .from('#hero-english-layer h1', { y: 35, autoAlpha: 0, duration: 0.8 }, '-=0.4')
+      .from('#hero-english-layer > div:nth-child(3)', { y: 25, autoAlpha: 0, duration: 0.7 }, '-=0.5')
+      .from('#hero-english-layer > div:nth-child(4)', { y: 20, autoAlpha: 0, duration: 0.6 }, '-=0.4')
+      .from('#hero-english-layer > div:nth-child(5)', { scale: 0.96, y: 20, autoAlpha: 0, duration: 0.6 }, '-=0.3')
+      .from('#hero-english-layer p', { y: 20, autoAlpha: 0, duration: 0.6 }, '-=0.4')
+      .from('#hero .grid > div', { y: 25, autoAlpha: 0, stagger: 0.08, duration: 0.6 }, '-=0.3')
+      .from('#hero .mt-14 .grid > a', { y: 20, autoAlpha: 0, stagger: 0.07, duration: 0.6 }, '-=0.3');
+
+    // 3. Section Titles & Section Introductions (ScrollTrigger)
+    gsap.utils.toArray('section header, section h2, .section-heading').forEach(el => {
+      gsap.from(el, {
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 88%',
+          toggleActions: 'play none none none',
+          once: true
+        },
+        y: 35,
+        autoAlpha: 0,
+        duration: 0.8,
+        ease: 'power2.out'
+      });
+    });
+
+    // 4. Project Cards Batch ScrollTrigger Reveal
+    ScrollTrigger.batch('.project-card', {
+      start: 'top 88%',
+      onEnter: batch => gsap.from(batch, {
+        autoAlpha: 0,
+        y: 45,
+        stagger: 0.12,
+        duration: 0.8,
+        ease: 'power2.out',
+        overwrite: 'auto'
+      }),
+      once: true
+    });
+
+    // 5. Fluted Glass Installation Showcase ScrollTrigger Reveal
+    const flutedSection = document.getElementById('fluted-section');
+    if (flutedSection) {
+      gsap.from(flutedSection.querySelector('.glass-card'), {
+        scrollTrigger: {
+          trigger: flutedSection,
+          start: 'top 82%',
+          toggleActions: 'play none none none',
+          once: true
+        },
+        y: 40,
+        autoAlpha: 0,
+        duration: 0.9,
+        ease: 'power2.out'
+      });
+    }
+
+    // 6. Timeline / Rotation Cards ScrollTrigger Reveal
+    ScrollTrigger.batch('#timeline .glass-card, #timeline > div > div', {
+      start: 'top 88%',
+      onEnter: batch => gsap.from(batch, {
+        autoAlpha: 0,
+        y: 35,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: 'power2.out',
+        overwrite: 'auto'
+      }),
+      once: true
+    });
+
+    // 7. Skills & Expertise Grid ScrollTrigger Reveal
+    ScrollTrigger.batch('#skills .glass-card, #skills [class*="glass-card"]', {
+      start: 'top 88%',
+      onEnter: batch => gsap.from(batch, {
+        autoAlpha: 0,
+        y: 30,
+        stagger: 0.08,
+        duration: 0.7,
+        ease: 'power2.out',
+        overwrite: 'auto'
+      }),
+      once: true
+    });
+
+    // 8. Contact Section ScrollTrigger Reveal
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      gsap.from(contactSection.querySelectorAll('.glass-card, h2, p, a, button'), {
+        scrollTrigger: {
+          trigger: contactSection,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+          once: true
+        },
+        y: 30,
+        autoAlpha: 0,
+        stagger: 0.07,
+        duration: 0.75,
+        ease: 'power2.out'
+      });
+    }
 
     // Interactive 3D Perspective Card Tilt (Zero-Layout Thrashing via Cached Rects)
     document.querySelectorAll('.project-card').forEach(card => {
@@ -1327,12 +1417,25 @@
       const modal = document.getElementById('case-modal');
       modal.classList.remove('hidden');
       document.body.classList.add('overflow-hidden');
+      gsap.fromTo(modal.querySelector('.glass-card'), 
+        { scale: 0.95, autoAlpha: 0, y: 20 }, 
+        { scale: 1, autoAlpha: 1, y: 0, duration: 0.35, ease: 'power3.out' }
+      );
     }
 
     function closeModal() {
       const modal = document.getElementById('case-modal');
-      modal.classList.add('hidden');
-      document.body.classList.remove('overflow-hidden');
+      gsap.to(modal.querySelector('.glass-card'), {
+        scale: 0.96,
+        autoAlpha: 0,
+        y: 10,
+        duration: 0.2,
+        ease: 'power2.in',
+        onComplete: () => {
+          modal.classList.add('hidden');
+          document.body.classList.remove('overflow-hidden');
+        }
+      });
     }
 
     // Filter Buttons
@@ -1349,15 +1452,25 @@
         btn.classList.remove('text-white/60');
 
         const filter = btn.getAttribute('data-filter');
+        const visibleCards = [];
 
         projectCards.forEach(card => {
           const categories = card.getAttribute('data-category').split(' ');
           if (filter === 'all' || categories.includes(filter)) {
             card.style.display = 'flex';
+            visibleCards.push(card);
           } else {
             card.style.display = 'none';
           }
         });
+
+        if (visibleCards.length > 0) {
+          gsap.fromTo(visibleCards, 
+            { autoAlpha: 0, y: 20 }, 
+            { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.05, ease: 'power2.out', overwrite: 'auto' }
+          );
+        }
+        ScrollTrigger.refresh();
       });
     });
 
