@@ -9,7 +9,7 @@
   <!-- Google Fonts: Editorial Display + Technical Mono + Clean Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Syne:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -19,9 +19,10 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            display: ['"Syne"', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace'],
+            sans: ['"Inter"', '"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            display: ['"Space Grotesk"', '"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Space Grotesk"', '"Plus Jakarta Sans"', 'sans-serif'],
+            code: ['"Space Mono"', 'monospace'],
             grotesk: ['"Space Grotesk"', 'sans-serif'],
           },
           colors: {
@@ -167,9 +168,13 @@
   <!-- Interactive Scroll Progress Indicator -->
   <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-monopo-amber via-white to-monopo-blue z-[100] transition-all duration-75" style="width: 0%;"></div>
 
-  <!-- Interactive Fluid Chromatic Waves Canvas (Monopo London Fluid Hero) -->
+  <!-- Ambient Cosmic & Fluid Background Video (2001: Space Odyssey / Monopo Aesthetic) -->
   <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <canvas id="chromatic-canvas" class="w-full h-full opacity-65"></canvas>
+    <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-25 mix-blend-screen filter contrast-125 brightness-90">
+      <source src="assets/bg-ambient.webm" type="video/webm">
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-b from-monopo-black/50 via-transparent to-monopo-black/80"></div>
+    <canvas id="chromatic-canvas" class="absolute inset-0 w-full h-full opacity-60 mix-blend-screen"></canvas>
   </div>
 
   <!-- Interactive Optical Magnifier Lens (Reference Image 2) -->
@@ -276,73 +281,107 @@
       </div>
     </div>
 
-    <!-- Monopo Triple Sub-Column Footer (Directly Inspired by Reference Image 1) -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-10 border-t border-white/10 text-xs font-mono">
+    <!-- Monopo Triple Sub-Column Footer -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-10 border-t border-white/10 text-xs font-sans">
       <div>
-        <div class="text-white font-bold mb-1 uppercase tracking-wider text-[11px]">Based in Cincinnati</div>
-        <div class="text-white/50 leading-relaxed">Global rotations across international operations & Point Lisas (Trinidad & Tobago). Open to full-time relocation Spring 2027.</div>
+        <div class="text-white font-semibold mb-1 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-monopo-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <span>Based in Cincinnati</span>
+        </div>
+        <div class="text-white/60 leading-relaxed font-light">Global rotations across US operations & <span class="text-white/90 font-normal">Point Lisas (Trinidad & Tobago)</span>. Open to full-time relocation Spring 2027.</div>
       </div>
       <div>
-        <div class="text-white font-bold mb-1 uppercase tracking-wider text-[11px]">5 Completed Co-Op Rotations</div>
-        <div class="text-white/50 leading-relaxed">Nucor Nu-Iron • Nucor Raw Materials (x2) • Ischebeck Titan • Cummins Inc. Heavy Powertrain.</div>
+        <div class="text-white font-semibold mb-1 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span>5 Completed Co-Op Rotations</span>
+        </div>
+        <div class="text-white/60 leading-relaxed font-light">
+          <a href="https://www.nucor.com" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 underline decoration-white/25 hover:decoration-emerald-400 transition-colors">Nucor Nu-Iron</a> • 
+          <a href="https://www.nucor.com" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 underline decoration-white/25 hover:decoration-emerald-400 transition-colors">Nucor Raw Materials (x2)</a> • 
+          <a href="https://www.ischebeck-titan.com" target="_blank" rel="noopener noreferrer" class="hover:text-monopo-amber underline decoration-white/25 hover:decoration-monopo-amber transition-colors">Ischebeck Titan</a> • 
+          <a href="https://www.cummins.com" target="_blank" rel="noopener noreferrer" class="hover:text-red-400 underline decoration-white/25 hover:decoration-red-400 transition-colors">Cummins Inc. Heavy Powertrain</a>.
+        </div>
       </div>
       <div>
-        <div class="text-white font-bold mb-1 uppercase tracking-wider text-[11px]">Core Technical Scope</div>
-        <div class="text-white/50 leading-relaxed">$750k–$1M CapEx Installations • 5,000 HP Driveline Automation • 9-Plant PLC Commissioning • Creo/SolidWorks.</div>
+        <div class="text-white font-semibold mb-1 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-monopo-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <span>Core Technical Scope</span>
+        </div>
+        <div class="text-white/60 leading-relaxed font-light">$750k–$1M CapEx Installations • 5,000 HP Driveline Automation • 9-Plant PLC Commissioning • Creo/SolidWorks.</div>
       </div>
     </div>
 
     <!-- Corporate Rotations & Enterprise Experience Banner -->
     <div class="mt-14 pt-8 border-t border-white/10">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-2">
-        <span class="text-[11px] font-mono uppercase tracking-widest text-white/50">Enterprise Rotations & Engineering Pedigree</span>
-        <span class="text-[11px] font-mono text-monopo-amber">4 Industry Leaders Across 3 Countries</span>
+        <span class="text-[11px] font-sans uppercase tracking-widest text-white/60 font-semibold">Enterprise Rotations & Engineering Pedigree</span>
+        <span class="text-[11px] font-sans text-monopo-amber font-medium">Click to Visit Official Portals ↗</span>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         
         <!-- Nucor -->
-        <div class="glass-card rounded-2xl p-4 flex items-center gap-3.5 border border-white/10 hover:border-emerald-400/40 transition-all group">
-          <div class="w-12 h-12 rounded-xl overflow-hidden border border-white/15 bg-black/50 p-1 flex-shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform shadow-lg">
-            <img src="assets/logo_nucor.png" alt="Nucor Corporation" class="w-full h-full object-contain rounded-lg" />
+        <a href="https://www.nucor.com/" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-4 flex items-center justify-between gap-3.5 border border-white/10 hover:border-emerald-400/50 hover:bg-white/[0.06] transition-all group shadow-lg">
+          <div class="flex items-center gap-3.5 min-w-0">
+            <div class="w-12 h-12 rounded-xl overflow-hidden border border-white/15 bg-black/50 p-1 flex-shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform shadow-lg">
+              <img src="assets/logo_nucor.png" alt="Nucor Corporation" class="w-full h-full object-contain rounded-lg" />
+            </div>
+            <div class="min-w-0">
+              <div class="text-sm font-display font-bold text-white group-hover:text-emerald-400 transition-colors truncate flex items-center gap-1">
+                <span>Nucor Corp.</span>
+                <span class="text-xs text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
+              </div>
+              <div class="text-[11px] font-sans text-white/50 truncate">Raw Materials & Nu-Iron</div>
+            </div>
           </div>
-          <div class="min-w-0">
-            <div class="text-sm font-display font-bold text-white group-hover:text-emerald-400 transition-colors truncate">Nucor Corp.</div>
-            <div class="text-[11px] font-mono text-white/40 truncate">Raw Materials & Nu-Iron</div>
-          </div>
-        </div>
+        </a>
 
         <!-- Cummins -->
-        <div class="glass-card rounded-2xl p-4 flex items-center gap-3.5 border border-white/10 hover:border-red-500/40 transition-all group">
-          <div class="w-12 h-12 rounded-xl overflow-hidden border border-white/15 bg-black/50 p-1 flex-shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform shadow-lg">
-            <img src="assets/logo_cummins.png" alt="Cummins Inc." class="w-full h-full object-contain" />
+        <a href="https://www.cummins.com/" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-4 flex items-center justify-between gap-3.5 border border-white/10 hover:border-red-500/50 hover:bg-white/[0.06] transition-all group shadow-lg">
+          <div class="flex items-center gap-3.5 min-w-0">
+            <div class="w-12 h-12 rounded-xl overflow-hidden border border-white/15 bg-black/50 p-1 flex-shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform shadow-lg">
+              <img src="assets/logo_cummins.png" alt="Cummins Inc." class="w-full h-full object-contain" />
+            </div>
+            <div class="min-w-0">
+              <div class="text-sm font-display font-bold text-white group-hover:text-red-400 transition-colors truncate flex items-center gap-1">
+                <span>Cummins Inc.</span>
+                <span class="text-xs text-red-400 opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
+              </div>
+              <div class="text-[11px] font-sans text-white/50 truncate">Heavy Powertrain Testing</div>
+            </div>
           </div>
-          <div class="min-w-0">
-            <div class="text-sm font-display font-bold text-white group-hover:text-red-400 transition-colors truncate">Cummins Inc.</div>
-            <div class="text-[11px] font-mono text-white/40 truncate">Heavy Powertrain Testing</div>
-          </div>
-        </div>
+        </a>
 
         <!-- Ischebeck Titan -->
-        <div class="glass-card rounded-2xl p-4 flex items-center gap-3.5 border border-white/10 hover:border-monopo-amber/40 transition-all group">
-          <div class="w-12 h-12 rounded-xl overflow-hidden border border-white/15 bg-white p-1.5 flex-shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform shadow-lg">
-            <img src="assets/logo_ischebeck.png" alt="Ischebeck Titan LLC" class="w-full h-full object-contain" />
+        <a href="https://www.ischebeck-titan.com/" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-4 flex items-center justify-between gap-3.5 border border-white/10 hover:border-monopo-amber/50 hover:bg-white/[0.06] transition-all group shadow-lg">
+          <div class="flex items-center gap-3.5 min-w-0">
+            <div class="w-12 h-12 rounded-xl overflow-hidden border border-white/15 bg-white p-1.5 flex-shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform shadow-lg">
+              <img src="assets/logo_ischebeck.png" alt="Ischebeck Titan LLC" class="w-full h-full object-contain" />
+            </div>
+            <div class="min-w-0">
+              <div class="text-sm font-display font-bold text-white group-hover:text-monopo-amber transition-colors truncate flex items-center gap-1">
+                <span>Ischebeck Titan</span>
+                <span class="text-xs text-monopo-amber opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
+              </div>
+              <div class="text-[11px] font-sans text-white/50 truncate">Formwork & High-Rise Systems</div>
+            </div>
           </div>
-          <div class="min-w-0">
-            <div class="text-sm font-display font-bold text-white group-hover:text-monopo-amber transition-colors truncate">Ischebeck Titan</div>
-            <div class="text-[11px] font-mono text-white/40 truncate">Formwork & High-Rise Systems</div>
-          </div>
-        </div>
+        </a>
 
         <!-- University of Cincinnati -->
-        <div class="glass-card rounded-2xl p-4 flex items-center gap-3.5 border border-white/10 hover:border-red-400/40 transition-all group">
-          <div class="w-12 h-12 rounded-xl overflow-hidden border border-white/15 bg-black/50 p-1 flex-shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform shadow-lg">
-            <img src="assets/logo_uc.png" alt="University of Cincinnati" class="w-full h-full object-contain rounded-lg" />
+        <a href="https://www.uc.edu/" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-4 flex items-center justify-between gap-3.5 border border-white/10 hover:border-red-400/50 hover:bg-white/[0.06] transition-all group shadow-lg">
+          <div class="flex items-center gap-3.5 min-w-0">
+            <div class="w-12 h-12 rounded-xl overflow-hidden border border-white/15 bg-black/50 p-1 flex-shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform shadow-lg">
+              <img src="assets/logo_uc.png" alt="University of Cincinnati" class="w-full h-full object-contain rounded-lg" />
+            </div>
+            <div class="min-w-0">
+              <div class="text-sm font-display font-bold text-white group-hover:text-red-400 transition-colors truncate flex items-center gap-1">
+                <span>Univ. of Cincinnati</span>
+                <span class="text-xs text-red-400 opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
+              </div>
+              <div class="text-[11px] font-sans text-white/50 truncate">Housing Operations & Facilities</div>
+            </div>
           </div>
-          <div class="min-w-0">
-            <div class="text-sm font-display font-bold text-white group-hover:text-red-400 transition-colors truncate">Univ. of Cincinnati</div>
-            <div class="text-[11px] font-mono text-white/40 truncate">Housing Operations & Facilities</div>
-          </div>
-        </div>
+        </a>
 
       </div>
     </div>
@@ -359,10 +398,10 @@
           <span class="w-3 h-3 rounded-full border border-white/30 bg-white/10 inline-block"></span>
           <span class="w-3 h-3 rounded-full border border-white/30 bg-white/10 inline-block"></span>
           <span class="w-3 h-3 rounded-full border border-white/30 bg-white/10 inline-block"></span>
-          <span class="text-xs font-mono text-white/40 ml-3 hidden sm:inline">project_engineering_execution.cad</span>
+          <span class="text-xs font-sans text-white/40 ml-3 hidden sm:inline">capital_projects_engineering.cad</span>
         </div>
         <div class="flex items-center gap-3">
-          <span class="text-xs font-mono text-monopo-amber">100% End-to-End Ownership</span>
+          <span class="text-xs font-sans text-monopo-amber font-medium">Complete Lifecycle Ownership</span>
           <span class="text-monopo-amber font-display text-base">*</span>
         </div>
       </div>
@@ -378,9 +417,9 @@
 
         <!-- Foreground Content (Above Fluted Glass) -->
         <div class="relative z-20 max-w-2xl">
-          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full glass-pill text-[11px] font-mono text-monopo-amber mb-6 border border-emerald-500/30">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full glass-pill text-[11px] font-sans text-monopo-amber mb-6 border border-emerald-500/30">
             <img src="assets/logo_nucor.png" alt="Nucor" class="w-4 h-4 rounded object-contain" />
-            <span>CAPITAL PROJECT ENGINEERING</span>
+            <span class="font-semibold">CAPITAL PROJECT ENGINEERING</span>
             <span>•</span>
             <span>NUCOR RAW MATERIALS</span>
           </div>
@@ -394,31 +433,31 @@
             Sole project lead directing scope-of-work bid packages, vendor evaluations, CapEx expenditure tracking in Excel/MS Project, and on-site contractor coordination from initial engineering review through final lineside validation.
           </p>
 
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 font-sans">
             <div class="p-3 rounded-xl bg-black/40 border border-white/10 backdrop-blur-sm">
               <div class="text-xl font-display font-bold text-white">$1M</div>
-              <div class="text-[10px] font-mono text-white/50 uppercase">Project Valuation</div>
+              <div class="text-[10px] text-white/50 uppercase font-medium">Project Valuation</div>
             </div>
             <div class="p-3 rounded-xl bg-black/40 border border-white/10 backdrop-blur-sm">
               <div class="text-xl font-display font-bold text-monopo-amber">$200K+</div>
-              <div class="text-[10px] font-mono text-white/50 uppercase">Direct Procurement</div>
+              <div class="text-[10px] text-white/50 uppercase font-medium">Direct Procurement</div>
             </div>
             <div class="p-3 rounded-xl bg-black/40 border border-white/10 backdrop-blur-sm">
               <div class="text-xl font-display font-bold text-white">0%</div>
-              <div class="text-[10px] font-mono text-white/50 uppercase">Fit-Up Rework</div>
+              <div class="text-[10px] text-white/50 uppercase font-medium">Fit-Up Rework</div>
             </div>
             <div class="p-3 rounded-xl bg-black/40 border border-white/10 backdrop-blur-sm">
               <div class="text-xl font-display font-bold text-emerald-400">&lt; 2%</div>
-              <div class="text-[10px] font-mono text-white/50 uppercase">Schedule Variance</div>
+              <div class="text-[10px] text-white/50 uppercase font-medium">Schedule Variance</div>
             </div>
           </div>
         </div>
 
         <!-- Action & Case Study Trigger -->
         <div class="relative z-20 flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/10">
-          <div class="flex items-center gap-2 text-xs font-mono text-white/60">
-            <span>Powered by Rohendhar (Ro)</span>
-            <span>•</span>
+          <div class="flex items-center gap-2 text-xs font-sans font-medium text-white/70 tracking-wide">
+            <span class="text-white/90">Rohendhar (Ro)</span>
+            <span class="text-white/30">•</span>
             <span>Spring 2027 Full-Time Candidate</span>
           </div>
 
@@ -470,7 +509,7 @@
             <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-emerald-400/10 text-emerald-400 border border-emerald-400/20">CapEx Lead</span>
           </div>
           <h3 class="text-xl font-display font-bold text-white group-hover:text-monopo-amber transition-colors mb-3">
-            $750K–$1M Capital Projects End-to-End Execution
+            $750K–$1M Capital Projects & Plant Installations
           </h3>
           <p class="text-sm text-white/70 font-light leading-relaxed mb-6">
             Administered procurement, CapEx budgeting in Excel, and vendor coordination up to $200k in equipment while leading lineside walkdowns.
@@ -766,7 +805,7 @@
           <h3 class="text-xl font-display font-bold text-white group-hover:text-monopo-amber transition-colors">Project Engineering Co-Op</h3>
           <p class="text-sm text-white/50 font-mono mb-3">Nucor Raw Materials • Cincinnati, OH</p>
           <p class="text-sm text-white/75 font-light leading-relaxed">
-            Administered end-to-end execution of $750k–$1M capital projects, managing vendor selection, direct material purchases up to $200k, and systematic P&ID field walkdowns.
+            Administered $750k–$1M capital project lifecycles, managing vendor selection, direct material purchases up to $200k, and systematic P&ID field walkdowns.
           </p>
         </div>
       </div>
@@ -924,7 +963,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="relative z-20 text-center text-xs font-mono text-white/40 py-8 border-t border-white/5">
+  <footer class="relative z-20 text-center text-xs font-sans font-medium text-white/50 py-8 border-t border-white/5 tracking-wider">
     <p>Rohendhar (Ro) • Mechanical Engineering & Project Management Portfolio © 2026</p>
   </footer>
 
@@ -1150,7 +1189,7 @@
     // Case Study Database
     const caseStudies = {
       'modal-capital': {
-        title: '$750K–$1M Capital Projects End-to-End Execution',
+        title: '$750K–$1M Capital Projects & Plant Installations',
         company: 'Nucor Raw Materials • Cincinnati, OH',
         logo: 'assets/logo_nucor.png',
         logoBg: 'bg-black/60',
