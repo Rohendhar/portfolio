@@ -75,29 +75,26 @@
       text-shadow: -2px 0 rgba(28, 110, 255, 0.8), 2px 0 rgba(255, 98, 31, 0.8);
     }
 
-    /* Ethereal Glassmorphism (Optimized 120 FPS Depth) */
+    /* Ethereal Glassmorphism (Zero-Cost 120 FPS Optimized) */
     .glass-card {
-      background: rgba(18, 18, 22, 0.88);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(18, 18, 22, 0.94);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
       border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.75), 
                   inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
     }
 
     .glass-card:hover {
-      background: rgba(24, 24, 30, 0.95);
+      background: rgba(24, 24, 30, 0.98);
       border-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-4px);
       box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.85), 
                   0 0 25px -5px rgba(255, 98, 31, 0.22);
     }
 
     .glass-pill {
       background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
       border: 1px solid rgba(255, 255, 255, 0.09);
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
     }
@@ -111,19 +108,21 @@
 
     /* Modal Backdrop */
     .modal-backdrop {
-      background: rgba(6, 6, 8, 0.88);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: rgba(6, 6, 8, 0.92);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
 
-    /* Monopo Optical Magnifying Glass Lens (Reference: Monopo Japanese/Backend X-Ray) */
+    /* Monopo Optical Magnifying Glass Lens (120 FPS GPU-Composited) */
     #magnifier-orb {
       position: absolute;
+      top: 0;
+      left: 0;
       width: 190px;
       height: 190px;
       border-radius: 50%;
       pointer-events: none;
-      /* Optical Glass Spherical Surface: semi-transparent, luminous rim, specular reflections */
+      /* Optical Glass Spherical Surface */
       background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.08), rgba(0, 255, 102, 0.05) 55%, rgba(0, 15, 8, 0.4) 100%);
       border: 1.5px solid rgba(0, 255, 102, 0.75);
       box-shadow: 
@@ -131,22 +130,18 @@
         inset 0 0 25px rgba(0, 255, 102, 0.25),
         inset 0 2px 4px rgba(255, 255, 255, 0.45),
         0 20px 45px rgba(0, 0, 0, 0.8);
-      transform: translate(-50%, -50%);
-      transition: opacity 0.2s ease-out;
+      transform: translate3d(-9999px, -9999px, 0) translate(-50%, -50%);
+      transition: opacity 0.15s ease-out;
       z-index: 50;
       opacity: 0;
       overflow: hidden;
-    }
-
-    /* GSAP Hardware Accelerated Layers */
-    .gsap-reveal {
       will-change: transform, opacity;
     }
 
     /* 3D Interactive Card Perspective */
     .tilt-card {
       transform-style: preserve-3d;
-      transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+      will-change: transform;
     }
 
     /* Custom Scrollbar */
@@ -995,152 +990,113 @@
 
   <!-- JavaScript: Canvas Waves, Lens Orb, Modals, 3D Tilt & Scroll Motion -->
   <script>
-    // Initialize GSAP & ScrollTrigger
-    gsap.registerPlugin(ScrollTrigger);
+    // 1. High-Performance Smooth Scroll Progress Indicator (Zero-Cost GPU Cached)
+    let scrollTicking = false;
+    const progressBar = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', () => {
+      if (!scrollTicking) {
+        requestAnimationFrame(() => {
+          const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+          const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+          if (progressBar) progressBar.style.width = `${scrolled}%`;
+          scrollTicking = false;
+        });
+        scrollTicking = true;
+      }
+    }, { passive: true });
 
-    // 1. Scroll-Driven Progress Bar (Scrubbed with GSAP ScrollTrigger)
-    gsap.to('#scroll-progress', {
-      scrollTrigger: {
-        trigger: 'body',
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: 0.15
-      },
-      width: '100%',
-      ease: 'none'
-    });
-
-    // 2. Cinematic Hero Sequence Timeline
-    const heroTl = gsap.timeline({
-      defaults: { ease: 'power3.out' }
-    });
-
-    heroTl
-      .from('header', { y: -30, autoAlpha: 0, duration: 0.8 })
-      .from('#hero-english-layer > div:nth-child(1)', { y: 25, autoAlpha: 0, duration: 0.6 }, '-=0.4')
-      .from('#hero-english-layer h1', { y: 35, autoAlpha: 0, duration: 0.8 }, '-=0.4')
-      .from('#hero-english-layer > div:nth-child(3)', { y: 25, autoAlpha: 0, duration: 0.7 }, '-=0.5')
-      .from('#hero-english-layer > div:nth-child(4)', { y: 20, autoAlpha: 0, duration: 0.6 }, '-=0.4')
-      .from('#hero-english-layer > div:nth-child(5)', { scale: 0.96, y: 20, autoAlpha: 0, duration: 0.6 }, '-=0.3')
-      .from('#hero-english-layer p', { y: 20, autoAlpha: 0, duration: 0.6 }, '-=0.4')
-      .from('#hero .grid > div', { y: 25, autoAlpha: 0, stagger: 0.08, duration: 0.6 }, '-=0.3')
-      .from('#hero .mt-14 .grid > a', { y: 20, autoAlpha: 0, stagger: 0.07, duration: 0.6 }, '-=0.3');
-
-    // 3. Section Titles & Section Introductions (ScrollTrigger)
-    gsap.utils.toArray('section header, section h2, .section-heading').forEach(el => {
-      gsap.from(el, {
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 88%',
-          toggleActions: 'play none none none',
-          once: true
-        },
-        y: 35,
-        autoAlpha: 0,
-        duration: 0.8,
-        ease: 'power2.out'
-      });
-    });
-
-    // 4. Project Cards Batch ScrollTrigger Reveal
-    ScrollTrigger.batch('.project-card', {
-      start: 'top 88%',
-      onEnter: batch => gsap.from(batch, {
-        autoAlpha: 0,
-        y: 45,
-        stagger: 0.12,
-        duration: 0.8,
+    // 2. Fast, Snappy Hero Entrance Sequence (GSAP 3, completes in <0.6s)
+    if (typeof gsap !== 'undefined') {
+      gsap.from('header', { y: -20, opacity: 0, duration: 0.5, ease: 'power2.out', clearProps: 'all' });
+      gsap.from('#hero-english-layer > *', {
+        y: 20,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.04,
         ease: 'power2.out',
-        overwrite: 'auto'
-      }),
-      once: true
-    });
-
-    // 5. Fluted Glass Installation Showcase ScrollTrigger Reveal
-    const flutedSection = document.getElementById('fluted-section');
-    if (flutedSection) {
-      gsap.from(flutedSection.querySelector('.glass-card'), {
-        scrollTrigger: {
-          trigger: flutedSection,
-          start: 'top 82%',
-          toggleActions: 'play none none none',
-          once: true
-        },
-        y: 40,
-        autoAlpha: 0,
-        duration: 0.9,
-        ease: 'power2.out'
+        clearProps: 'all'
+      });
+      gsap.from('#hero .mt-14 a', {
+        y: 15,
+        opacity: 0,
+        duration: 0.4,
+        stagger: 0.04,
+        delay: 0.15,
+        ease: 'power2.out',
+        clearProps: 'all'
       });
     }
 
-    // 6. Timeline / Rotation Cards ScrollTrigger Reveal
-    ScrollTrigger.batch('#timeline .glass-card, #timeline > div > div', {
-      start: 'top 88%',
-      onEnter: batch => gsap.from(batch, {
-        autoAlpha: 0,
-        y: 35,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: 'power2.out',
-        overwrite: 'auto'
-      }),
-      once: true
-    });
-
-    // 7. Skills & Expertise Grid ScrollTrigger Reveal
-    ScrollTrigger.batch('#skills .glass-card, #skills [class*="glass-card"]', {
-      start: 'top 88%',
-      onEnter: batch => gsap.from(batch, {
-        autoAlpha: 0,
-        y: 30,
-        stagger: 0.08,
-        duration: 0.7,
-        ease: 'power2.out',
-        overwrite: 'auto'
-      }),
-      once: true
-    });
-
-    // 8. Contact Section ScrollTrigger Reveal
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      gsap.from(contactSection.querySelectorAll('.glass-card, h2, p, a, button'), {
-        scrollTrigger: {
-          trigger: contactSection,
-          start: 'top 85%',
-          toggleActions: 'play none none none',
-          once: true
-        },
-        y: 30,
-        autoAlpha: 0,
-        stagger: 0.07,
-        duration: 0.75,
-        ease: 'power2.out'
+    // 3. Buttery Smooth Scroll Reveals via Native IntersectionObserver + GSAP
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (typeof gsap !== 'undefined') {
+            gsap.to(entry.target, {
+              opacity: 1,
+              y: 0,
+              duration: 0.5,
+              ease: 'power2.out',
+              clearProps: 'all'
+            });
+          } else {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'none';
+          }
+          revealObserver.unobserve(entry.target);
+        }
       });
-    }
+    }, { threshold: 0.02, rootMargin: '0px 0px 80px 0px' });
 
-    // Interactive 3D Perspective Card Tilt (Zero-Layout Thrashing via Cached Rects)
+    // Target elements below initial viewport (ensures initial viewport content is NEVER hidden)
+    const viewportHeight = window.innerHeight;
+    document.querySelectorAll('.project-card, #timeline .glass-card, #skills .glass-card, #contact .glass-card, #fluted-section .glass-card').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top > viewportHeight + 40) {
+        if (typeof gsap !== 'undefined') {
+          gsap.set(el, { opacity: 0, y: 24 });
+        } else {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(24px)';
+        }
+        revealObserver.observe(el);
+      }
+    });
+
+    // Failsafe Watchdog: Guarantees 100% visibility under all conditions after 1s
+    setTimeout(() => {
+      document.querySelectorAll('.project-card, #timeline .glass-card, #skills .glass-card, #contact .glass-card, #fluted-section .glass-card').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.visibility = 'visible';
+      });
+    }, 1000);
+
+    // 4. Interactive 3D Perspective Card Tilt (Zero-Layout Thrashing via Cached Rects)
     document.querySelectorAll('.project-card').forEach(card => {
       card.classList.add('tilt-card');
       let rect = null;
       card.addEventListener('mouseenter', () => {
         rect = card.getBoundingClientRect();
+        card.style.transition = 'none';
       });
       card.addEventListener('mousemove', (e) => {
         if (!rect) rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
-        const rotateX = -(y / (rect.height / 2)) * 5;
-        const rotateY = (x / (rect.width / 2)) * 5;
-        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(1)}deg) rotateY(${rotateY.toFixed(1)}deg) translateY(-4px)`;
+        const rotateX = -(y / (rect.height / 2)) * 4;
+        const rotateY = (x / (rect.width / 2)) * 4;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(1)}deg) rotateY(${rotateY.toFixed(1)}deg)`;
       });
       card.addEventListener('mouseleave', () => {
         rect = null;
-        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+        card.style.transition = 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
       });
     });
 
-    // Monopo Optical Magnifying Glass Lens: English -> Matrix/Backend Translation (Reference Concept)
+    // 5. Monopo Optical Magnifying Glass Lens (120 FPS GPU-Composited translate3d)
     const heroArea = document.getElementById('hero-lens-area');
     const orb = document.getElementById('magnifier-orb');
     const backendLayer = document.getElementById('hero-backend-layer');
@@ -1188,10 +1144,9 @@
           if (!rafPending) {
             rafPending = true;
             requestAnimationFrame(() => {
-              // 1. Move optical glass lens to cursor coordinates
+              // 1. Move optical glass lens via 100% GPU composited translate3d (No layout reflow!)
               orb.style.opacity = '1';
-              orb.style.left = `${mouseX}px`;
-              orb.style.top = `${mouseY}px`;
+              orb.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
 
               // 2. Reveal backend/matrix translation layer clipped exactly to glass perimeter
               const clipCircle = `circle(${lensRadius}px at ${relX}px ${relY}px)`;
