@@ -45,12 +45,13 @@
   </script>
 
   <style>
-    /* Wabi-Sabi Organic Noise Filter */
+    /* High-Performance Tech Grid Background (Zero-Cost GPU Cached) */
     .bg-noise {
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.045'/%3E%3C/svg%3E");
+      background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+      background-size: 32px 32px;
     }
 
-    /* Fluted / Ribbed Glass Texture Overlay (From Reference Image 2) */
+    /* Fluted / Ribbed Glass Texture Overlay (Silky 120 FPS) */
     .fluted-glass {
       background-image: repeating-linear-gradient(
         90deg,
@@ -61,8 +62,8 @@
         transparent 14px,
         rgba(255, 255, 255, 0.04) 15px
       );
-      backdrop-filter: blur(18px) contrast(120%);
-      -webkit-backdrop-filter: blur(18px) contrast(120%);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
 
     /* Chromatic Aberration Text Shift */
@@ -70,62 +71,65 @@
       text-shadow: -2px 0 rgba(28, 110, 255, 0.8), 2px 0 rgba(255, 98, 31, 0.8);
     }
 
-    /* Ethereal Glassmorphism Specular Border & Depth */
+    /* Ethereal Glassmorphism (Optimized 120 FPS Depth) */
     .glass-card {
-      background: rgba(18, 18, 22, 0.68);
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
+      background: rgba(18, 18, 22, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 24px 50px -15px rgba(0, 0, 0, 0.75), 
-                  inset 0 1px 1px 0 rgba(255, 255, 255, 0.15),
-                  inset 0 -1px 1px 0 rgba(0, 0, 0, 0.4);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.75), 
+                  inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .glass-card:hover {
-      background: rgba(24, 24, 30, 0.85);
+      background: rgba(24, 24, 30, 0.95);
       border-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-5px);
-      box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.9), 
-                  0 0 30px -5px rgba(255, 98, 31, 0.22),
-                  inset 0 1px 1px 0 rgba(255, 255, 255, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.85), 
+                  0 0 25px -5px rgba(255, 98, 31, 0.22);
     }
 
     .glass-pill {
-      background: rgba(255, 255, 255, 0.045);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       border: 1px solid rgba(255, 255, 255, 0.09);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
     }
 
     .glass-pill-active {
-      background: rgba(255, 98, 31, 0.18);
-      border-color: rgba(255, 98, 31, 0.5);
+      background: rgba(255, 98, 31, 0.22);
+      border-color: rgba(255, 98, 31, 0.55);
       color: #fff;
-      box-shadow: 0 0 18px rgba(255, 98, 31, 0.35);
+      box-shadow: 0 0 15px rgba(255, 98, 31, 0.35);
     }
 
     /* Modal Backdrop */
     .modal-backdrop {
-      background: rgba(6, 6, 8, 0.85);
-      backdrop-filter: blur(36px);
-      -webkit-backdrop-filter: blur(36px);
+      background: rgba(6, 6, 8, 0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
-    /* Matrix Digital Rain Circular Portal (Reference Image) */
+    /* Monopo Optical Magnifying Glass Lens (Reference: Monopo Japanese/Backend X-Ray) */
     #magnifier-orb {
       position: absolute;
-      width: 210px;
-      height: 210px;
+      width: 190px;
+      height: 190px;
       border-radius: 50%;
       pointer-events: none;
-      border: 2px solid #00ff66;
-      background: #020402;
-      box-shadow: 0 0 35px rgba(0, 255, 102, 0.45), inset 0 0 25px rgba(0, 255, 102, 0.25), 0 25px 50px rgba(0, 0, 0, 0.9);
+      /* Optical Glass Spherical Surface: semi-transparent, luminous rim, specular reflections */
+      background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.08), rgba(0, 255, 102, 0.05) 55%, rgba(0, 15, 8, 0.4) 100%);
+      border: 1.5px solid rgba(0, 255, 102, 0.75);
+      box-shadow: 
+        0 0 35px rgba(0, 255, 102, 0.35),
+        inset 0 0 25px rgba(0, 255, 102, 0.25),
+        inset 0 2px 4px rgba(255, 255, 255, 0.45),
+        0 20px 45px rgba(0, 0, 0, 0.8);
       transform: translate(-50%, -50%);
-      transition: opacity 0.25s ease-out;
-      z-index: 60;
+      transition: opacity 0.2s ease-out;
+      z-index: 50;
       opacity: 0;
       overflow: hidden;
     }
@@ -161,24 +165,20 @@
   <!-- Interactive Scroll Progress Indicator -->
   <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-monopo-amber via-white to-monopo-blue z-[100] transition-all duration-75" style="width: 0%;"></div>
 
-  <!-- Hardware-Accelerated Ambient Cosmic Glow (Silky Smooth 120 FPS, Zero Lag) -->
-  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-monopo-black">
-    <div class="absolute -top-32 -left-32 w-[650px] h-[650px] rounded-full bg-blue-600/15 blur-[120px] transform-gpu"></div>
-    <div class="absolute top-1/4 -right-32 w-[600px] h-[600px] rounded-full bg-orange-600/15 blur-[130px] transform-gpu"></div>
-    <div class="absolute bottom-10 left-1/3 w-[550px] h-[550px] rounded-full bg-purple-600/15 blur-[140px] transform-gpu"></div>
-  </div>
+  <!-- Zero-Lag Static Ambient Cosmic Glow (Pure CSS Radial Gradients, 0% CPU, 120 FPS) -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" style="background: radial-gradient(circle at 15% 18%, rgba(28, 110, 255, 0.12) 0%, transparent 45%), radial-gradient(circle at 85% 25%, rgba(255, 98, 31, 0.12) 0%, transparent 45%), radial-gradient(circle at 50% 80%, rgba(147, 51, 234, 0.08) 0%, transparent 50%), #08080a;"></div>
 
-  <!-- Interactive Matrix Code Circular Portal (Reference Image) -->
-  <div id="magnifier-orb" class="overflow-hidden select-none pointer-events-none">
-    <!-- Dedicated Matrix Digital Rain Canvas -->
-    <canvas id="matrix-canvas" width="210" height="210" class="w-full h-full block rounded-full bg-black"></canvas>
-    
-    <!-- Matrix Vignette & Border Optics -->
-    <div class="absolute inset-0 rounded-full border border-emerald-400/50 pointer-events-none shadow-[inset_0_0_20px_rgba(0,0,0,0.85)]"></div>
-    
-    <!-- Micro Matrix Status Badge at Bottom Rim -->
+  <!-- Monopo Optical Magnifying Glass Lens (Transparent Glass with Specular Refraction & Matrix Rim) -->
+  <div id="magnifier-orb" class="select-none pointer-events-none">
+    <!-- Optical Glass Perimeter & Emerald Glow -->
+    <div class="absolute inset-0 rounded-full border border-emerald-400/80 pointer-events-none shadow-[inset_0_0_20px_rgba(0,255,102,0.3)]"></div>
+    <!-- Chromatic Aberration Rim Highlight -->
+    <div class="absolute inset-1 rounded-full border border-blue-400/25 pointer-events-none"></div>
+    <!-- Convex Glass Specular Reflection / Glare -->
+    <div class="absolute top-3 left-7 w-12 h-6 rounded-full bg-gradient-to-b from-white/35 to-transparent transform -rotate-12 pointer-events-none"></div>
+    <!-- Micro Lens Status Badge -->
     <div class="absolute bottom-2 inset-x-0 flex justify-center pointer-events-none z-20">
-      <span class="px-2.5 py-0.5 rounded-full bg-black/90 border border-emerald-400/40 text-[8px] font-mono text-emerald-400 font-bold tracking-widest uppercase shadow-[0_0_10px_rgba(0,255,100,0.4)]">MATRIX // 01 STREAM</span>
+      <span class="px-2 py-0.5 rounded-full bg-black/85 border border-emerald-400/60 text-[8px] font-mono text-emerald-300 font-bold tracking-widest uppercase shadow-[0_0_10px_rgba(0,255,102,0.4)]">BACKEND // MATRIX OPTIC</span>
     </div>
   </div>
 
@@ -214,10 +214,10 @@
   <!-- Hero Section: Chromatic Monopo Typography & Refraction -->
   <section id="hero" class="relative z-20 min-h-[85vh] flex flex-col justify-between px-6 sm:px-12 pt-16 pb-12 max-w-7xl mx-auto">
     
-    <!-- Hero Main Typography with Interactive Lens Trigger -->
+    <!-- Hero Main Typography with Monopo Interactive Optical Lens Trigger -->
     <div class="max-w-5xl my-auto cursor-crosshair group relative" id="hero-lens-area">
-      <!-- English Text Layer -->
-      <div class="relative z-10 select-none">
+      <!-- 1. English Front-End Layer -->
+      <div class="relative z-10 select-none pointer-events-none" id="hero-english-layer">
         <!-- Super-Title -->
         <div class="flex items-center gap-3 mb-5">
           <span class="text-xs font-sans uppercase tracking-widest text-monopo-amber font-semibold">Candidate Showcase & Systems Portfolio</span>
@@ -242,7 +242,7 @@
         </div>
 
         <!-- Inspiring Learning & Growth Quote Requested by User -->
-        <div class="mt-7 inline-flex items-center gap-3 px-5 py-2.5 rounded-2xl glass-card border border-white/15 shadow-xl select-none backdrop-blur-md">
+        <div class="mt-7 inline-flex items-center gap-3 px-5 py-2.5 rounded-2xl glass-card border border-white/15 shadow-xl select-none">
           <span class="text-monopo-amber text-2xl font-serif leading-none">“</span>
           <span class="text-sm sm:text-base text-white/95 font-sans italic font-light tracking-wide">
             The moment you stop learning is the moment you stop growing.
@@ -253,6 +253,47 @@
         <p class="text-sm sm:text-base text-white/70 font-light max-w-2xl mt-6 leading-relaxed">
           Mechanical Engineering senior with <span class="text-white font-medium">5 completed industrial rotations</span> across Nucor Nu-Iron, Nucor Raw Materials (x2), Ischebeck Titan, and Cummins Inc. Heavy Powertrain. Open to full-time relocation starting Spring 2027.
         </p>
+      </div>
+
+      <!-- 2. Matrix / Back-End Translation Layer (Revealed strictly through the Circular Glass Lens) -->
+      <div id="hero-backend-layer" class="absolute inset-0 z-20 pointer-events-none select-none overflow-hidden will-change-[clip-path]" style="clip-path: circle(0px at 0px 0px); -webkit-clip-path: circle(0px at 0px 0px);">
+        <div id="hero-backend-content" class="text-emerald-400 font-mono transition-transform duration-75 origin-top-left">
+          <!-- Super-Title in Back-End Machine Spec -->
+          <div class="flex items-center gap-3 mb-5">
+            <span class="text-xs font-mono uppercase tracking-widest text-emerald-300 font-bold bg-emerald-950/80 px-2.5 py-0.5 rounded border border-emerald-500/50 shadow-[0_0_10px_rgba(0,255,102,0.3)]">SYS::KERNEL // BACKEND_VIEW</span>
+            <span class="text-emerald-500/50">•</span>
+            <span class="text-xs font-mono uppercase tracking-widest text-emerald-400/90">0x7F454C46 // ARCH_x86_64</span>
+          </div>
+
+          <!-- Primary Name in Japanese Katakana + Hex + Matrix Translation (Reference Image Style) -->
+          <h1 class="font-mono text-4xl sm:text-7xl md:text-8xl font-black tracking-tight text-emerald-300 leading-[1.05] drop-shadow-[0_0_16px_rgba(0,255,102,0.9)]">
+            <span class="text-white drop-shadow-[0_0_12px_#00ff66]">ﾛﾍﾝﾀﾞｰ</span> [RO] <span class="text-emerald-400 text-3xl sm:text-6xl font-light">0x524F</span>
+          </h1>
+          
+          <div class="font-mono text-2xl sm:text-5xl md:text-6xl font-bold text-emerald-400 mt-2 sm:mt-3 leading-[1.1] drop-shadow-[0_0_14px_rgba(0,255,102,0.8)]">
+            <span class="text-emerald-200">機械工学</span> // MECH_ENG::CORE
+          </div>
+
+          <div class="text-sm sm:text-xl font-mono text-emerald-300 font-medium mt-3 flex flex-wrap items-center gap-2 sm:gap-3">
+            <span>ﾌﾟﾛｼﾞｪｸﾄマネジメント // PM_SYS</span>
+            <span class="text-emerald-500/40">•</span>
+            <span class="text-emerald-100 font-bold">UC_OHIO // 01010101</span>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-900/80 text-emerald-300 border border-emerald-400 font-mono font-bold shadow-[0_0_10px_rgba(0,255,102,0.4)]">GPA: 3.68 [OPTIMAL]</span>
+          </div>
+
+          <!-- Learning Quote Translated to Matrix / Machine Axiom -->
+          <div class="mt-7 inline-flex items-center gap-3 px-5 py-2.5 rounded-2xl bg-emerald-950/90 border border-emerald-400 text-emerald-200 font-mono shadow-[0_0_25px_rgba(0,255,102,0.5)] select-none">
+            <span class="text-emerald-400 text-2xl font-mono leading-none">“</span>
+            <span class="text-sm sm:text-base text-emerald-200 font-mono font-semibold tracking-wide">
+              01001100 01100101 // while(learning) { grow(); }
+            </span>
+            <span class="text-emerald-400 text-2xl font-mono leading-none">”</span>
+          </div>
+
+          <p class="text-sm sm:text-base text-emerald-300 font-mono max-w-2xl mt-6 leading-relaxed bg-black/90 p-3 rounded-xl border border-emerald-500/40 shadow-[0_0_15px_rgba(0,255,102,0.2)]">
+            &gt; ROTATIONS_EXEC: [NUCOR_IRON, NUCOR_RAW_x2, ISCHEBECK_TITAN, CUMMINS_POWERTRAIN] // 5/5 DEPLOYED.
+          </p>
+        </div>
       </div>
     </div>
 
@@ -957,14 +998,21 @@
 
   <!-- JavaScript: Canvas Waves, Lens Orb, Modals, 3D Tilt & Scroll Motion -->
   <script>
-    // Scroll Progress Bar Tracker
+    // Scroll Progress Bar Tracker (Throttled with requestAnimationFrame for 120 FPS)
+    let scrollTicking = false;
     window.addEventListener('scroll', () => {
-      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
-      const bar = document.getElementById('scroll-progress');
-      if (bar) bar.style.width = `${scrolled}%`;
-    });
+      if (!scrollTicking) {
+        requestAnimationFrame(() => {
+          const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+          const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+          const bar = document.getElementById('scroll-progress');
+          if (bar) bar.style.width = `${scrolled}%`;
+          scrollTicking = false;
+        });
+        scrollTicking = true;
+      }
+    }, { passive: true });
 
     // Scroll-Triggered Smooth Section & Card Reveals
     const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -40px 0px' };
@@ -981,128 +1029,99 @@
       revealObserver.observe(el);
     });
 
-    // Interactive 3D Perspective Card Tilt on Mouse Move
+    // Interactive 3D Perspective Card Tilt (Zero-Layout Thrashing via Cached Rects)
     document.querySelectorAll('.project-card').forEach(card => {
       card.classList.add('tilt-card');
+      let rect = null;
+      card.addEventListener('mouseenter', () => {
+        rect = card.getBoundingClientRect();
+      });
       card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
+        if (!rect) rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
-        const rotateX = -(y / (rect.height / 2)) * 6;
-        const rotateY = (x / (rect.width / 2)) * 6;
-        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-5px)`;
+        const rotateX = -(y / (rect.height / 2)) * 5;
+        const rotateY = (x / (rect.width / 2)) * 5;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(1)}deg) rotateY(${rotateY.toFixed(1)}deg) translateY(-4px)`;
       });
       card.addEventListener('mouseleave', () => {
+        rect = null;
         card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
       });
     });
 
-    // Interactive Matrix Digital Rain Circular Lens Portal (Reference Image)
+    // Monopo Optical Magnifying Glass Lens: English -> Matrix/Backend Translation (Reference Concept)
     const heroArea = document.getElementById('hero-lens-area');
     const orb = document.getElementById('magnifier-orb');
-    const mCanvas = document.getElementById('matrix-canvas');
+    const backendLayer = document.getElementById('hero-backend-layer');
+    const backendContent = document.getElementById('hero-backend-content');
 
-    if (heroArea && orb && mCanvas) {
-      const mCtx = mCanvas.getContext('2d');
-      const w = mCanvas.width = 210;
-      const h = mCanvas.height = 210;
-
-      // Matrix character set: Katakana + digits + engineering symbols
-      const chars = "ｦｱｳｴｵｶｷｹｺｻｼｽｾｿﾀﾂﾃﾅﾆﾇﾈﾊﾋﾎﾏﾐﾑﾒﾓﾔﾕﾗﾘﾜ0123456789ABCDEF⌖σλΩΔπ%#*+-<>";
-      const fontSize = 12;
-      const columns = Math.floor(w / fontSize);
-      // Initialize drops with scattered initial negative offsets for organic staggering
-      const drops = Array.from({ length: columns }, () => Math.floor(Math.random() * -20));
-      let matrixAnimId = null;
-      let isHovering = false;
-      let lastFrameTime = 0;
-      const fpsInterval = 1000 / 30; // 30 FPS Matrix update for authentic retro terminal feel and peak efficiency
-
-      function drawMatrix(timestamp) {
-        matrixAnimId = requestAnimationFrame(drawMatrix);
-        
-        const elapsed = timestamp - lastFrameTime;
-        if (elapsed < fpsInterval) return;
-        lastFrameTime = timestamp - (elapsed % fpsInterval);
-
-        // Semi-transparent fade layer to create green phosphor trailing effect
-        mCtx.fillStyle = "rgba(2, 6, 2, 0.18)";
-        mCtx.fillRect(0, 0, w, h);
-
-        mCtx.font = `bold ${fontSize}px "Space Grotesk", monospace`;
-
-        for (let i = 0; i < drops.length; i++) {
-          const char = chars[Math.floor(Math.random() * chars.length)];
-          const x = i * fontSize;
-          const y = drops[i] * fontSize;
-
-          if (y >= 0 && y <= h + fontSize) {
-            // Bright white leading head character with neon green bloom
-            mCtx.fillStyle = "#ffffff";
-            mCtx.shadowColor = "#00ff66";
-            mCtx.shadowBlur = 8;
-            mCtx.fillText(char, x, y);
-
-            // Previous character in glowing Matrix emerald green
-            if (drops[i] > 0) {
-              const trailChar = chars[Math.floor(Math.random() * chars.length)];
-              mCtx.fillStyle = "#00ff66";
-              mCtx.shadowColor = "#00ff66";
-              mCtx.shadowBlur = 4;
-              mCtx.fillText(trailChar, x, y - fontSize);
-            }
-          }
-
-          // Reset drop to top with randomized delay once it leaves canvas
-          if (y > h && Math.random() > 0.96) {
-            drops[i] = 0;
-          }
-          drops[i]++;
-        }
-      }
-
-      let mouseX = 0, mouseY = 0;
+    if (heroArea && orb && backendLayer && backendContent) {
+      let heroRect = null;
       let rafPending = false;
+      let mouseX = 0, mouseY = 0;
+      const lensRadius = 95; // 190px diameter optical glass lens
+
+      function updateHeroBounds() {
+        heroRect = heroArea.getBoundingClientRect();
+      }
+      window.addEventListener('resize', updateHeroBounds, { passive: true });
+      window.addEventListener('scroll', updateHeroBounds, { passive: true });
+
+      heroArea.addEventListener('mouseenter', () => {
+        updateHeroBounds();
+        orb.style.opacity = '1';
+      });
+
+      heroArea.addEventListener('mouseleave', () => {
+        orb.style.opacity = '0';
+        backendLayer.style.clipPath = 'circle(0px at 0px 0px)';
+        backendLayer.style.webkitClipPath = 'circle(0px at 0px 0px)';
+        backendContent.style.transform = 'scale(1)';
+      });
 
       document.addEventListener('mousemove', (e) => {
-        const rect = heroArea.getBoundingClientRect();
-        // Generous hover trigger zone around the hero headline
-        if (
-          e.clientX >= rect.left - 40 &&
-          e.clientX <= rect.right + 40 &&
-          e.clientY >= rect.top - 40 &&
-          e.clientY <= rect.bottom + 40
-        ) {
+        if (!heroRect) updateHeroBounds();
+
+        const inHero = (
+          e.clientX >= heroRect.left &&
+          e.clientX <= heroRect.right &&
+          e.clientY >= heroRect.top &&
+          e.clientY <= heroRect.bottom
+        );
+
+        if (inHero) {
           mouseX = e.pageX;
           mouseY = e.pageY;
+          const relX = e.clientX - heroRect.left;
+          const relY = e.clientY - heroRect.top;
 
           if (!rafPending) {
             rafPending = true;
             requestAnimationFrame(() => {
+              // 1. Move optical glass lens to cursor coordinates
               orb.style.opacity = '1';
               orb.style.left = `${mouseX}px`;
               orb.style.top = `${mouseY}px`;
+
+              // 2. Reveal backend/matrix translation layer clipped exactly to glass perimeter
+              const clipCircle = `circle(${lensRadius}px at ${relX}px ${relY}px)`;
+              backendLayer.style.clipPath = clipCircle;
+              backendLayer.style.webkitClipPath = clipCircle;
+
+              // 3. Optical magnification centered on cursor (exact Monopo reference effect)
+              backendContent.style.transformOrigin = `${relX}px ${relY}px`;
+              backendContent.style.transform = 'scale(1.10)';
+
               rafPending = false;
             });
           }
-
-          if (!isHovering) {
-            isHovering = true;
-            if (!matrixAnimId) {
-              mCtx.fillStyle = "#020402";
-              mCtx.fillRect(0, 0, w, h);
-              lastFrameTime = performance.now();
-              matrixAnimId = requestAnimationFrame(drawMatrix);
-            }
-          }
         } else {
-          orb.style.opacity = '0';
-          if (isHovering) {
-            isHovering = false;
-            if (matrixAnimId) {
-              cancelAnimationFrame(matrixAnimId);
-              matrixAnimId = null;
-            }
+          if (orb.style.opacity !== '0') {
+            orb.style.opacity = '0';
+            backendLayer.style.clipPath = 'circle(0px at 0px 0px)';
+            backendLayer.style.webkitClipPath = 'circle(0px at 0px 0px)';
+            backendContent.style.transform = 'scale(1)';
           }
         }
       }, { passive: true });
