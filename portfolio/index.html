@@ -108,9 +108,8 @@
 
     /* Modal Backdrop */
     .modal-backdrop {
-      background: rgba(6, 6, 8, 0.92);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      background: rgba(4, 4, 6, 0.94);
+      /* Removed backdrop-filter to prevent video decoding GPU stalls */
     }
 
     /* Monopo Optical Magnifying Glass Lens (120 FPS GPU-Composited) */
@@ -189,10 +188,10 @@
 
     <!-- Navigation & Resume -->
     <div class="flex items-center gap-4 text-xs font-mono">
-      <nav class="hidden md:flex items-center gap-6 uppercase tracking-widest text-white/70">
-        <a href="#work" class="hover:text-monopo-amber transition-colors">Work</a>
-        <a href="#fluted-section" class="hover:text-monopo-amber transition-colors">Installations</a>
-        <a href="#timeline" class="hover:text-monopo-amber transition-colors">Rotations</a>
+      <nav class="hidden md:flex items-center gap-6 uppercase tracking-widest text-white/70 text-xs font-mono">
+        <a href="#industrial" class="hover:text-monopo-amber transition-colors">Industrial Work</a>
+        <a href="#side-projects" class="hover:text-emerald-400 transition-colors flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Side Projects &amp; AI</a>
+        <a href="#timeline" class="hover:text-monopo-amber transition-colors">Timeline</a>
         <a href="#contact" class="hover:text-monopo-amber transition-colors">Contact</a>
       </nav>
 
@@ -479,26 +478,33 @@
     </div>
   </section>
 
-  <!-- Featured Works Grid (Inspired by thanhvtran.com) -->
-  <section id="work" class="relative z-20 py-16 px-6 sm:px-12 max-w-7xl mx-auto">
+  <!-- ==========================================================================
+       SECTION 1: INDUSTRIAL & PROFESSIONAL ENGINEERING PROJECTS
+       ========================================================================== -->
+  <section id="industrial" class="relative z-20 py-16 px-6 sm:px-12 max-w-7xl mx-auto">
     <!-- Header & Filter Tabs -->
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
       <div>
-        <span class="text-xs font-mono uppercase tracking-widest text-monopo-amber block mb-2">Technical Portfolio</span>
-        <h2 class="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight">Key Rotations & Systems</h2>
+        <div class="flex items-center gap-2 mb-2">
+          <span class="w-2 h-2 rounded-full bg-monopo-amber"></span>
+          <span class="text-xs font-mono uppercase tracking-widest text-monopo-amber">Professional Engineering</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight">Industrial &amp; Capital Projects</h2>
+        <p class="text-sm text-white/60 font-light mt-2 max-w-2xl font-mono">
+          Major manufacturing and capital execution roles across Nucor Raw Materials, Cummins Inc., and Ischebeck Titan Dubai spanning multi-million dollar CapEx, plant automation, and lineside reliability.
+        </p>
       </div>
 
       <!-- Filter Tabs -->
       <div class="flex flex-wrap gap-2" id="project-filters">
-        <button data-filter="all" class="filter-btn glass-pill glass-pill-active text-xs px-4 py-2 rounded-full font-mono transition-all">All Works</button>
-        <button data-filter="capital" class="filter-btn glass-pill text-xs px-4 py-2 rounded-full font-mono transition-all text-white/60 hover:text-white">Capital & Field</button>
-        <button data-filter="automation" class="filter-btn glass-pill text-xs px-4 py-2 rounded-full font-mono transition-all text-white/60 hover:text-white">Automation & PLC</button>
-        <button data-filter="reliability" class="filter-btn glass-pill text-xs px-4 py-2 rounded-full font-mono transition-all text-white/60 hover:text-white">Reliability & Testing</button>
-        <button data-filter="ai" class="filter-btn glass-pill text-xs px-4 py-2 rounded-full font-mono transition-all text-white/60 hover:text-white">Kinetic Pour & AI</button>
+        <button data-filter="all" class="filter-btn glass-pill glass-pill-active text-xs px-4 py-2 rounded-full font-mono transition-all">All Industrial</button>
+        <button data-filter="capital" class="filter-btn glass-pill text-xs px-4 py-2 rounded-full font-mono transition-all text-white/60 hover:text-white">Capital &amp; Field</button>
+        <button data-filter="automation" class="filter-btn glass-pill text-xs px-4 py-2 rounded-full font-mono transition-all text-white/60 hover:text-white">Automation &amp; PLC</button>
+        <button data-filter="reliability" class="filter-btn glass-pill text-xs px-4 py-2 rounded-full font-mono transition-all text-white/60 hover:text-white">Reliability &amp; Testing</button>
       </div>
     </div>
 
-    <!-- 7 Interactive Cards -->
+    <!-- 6 Industrial Cards Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
       <!-- Card 1: Nucor Fall 2025 Capital Projects -->
@@ -517,18 +523,17 @@
             <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-emerald-400/10 text-emerald-400 border border-emerald-400/20">CapEx Lead</span>
           </div>
           <h3 class="text-xl font-display font-bold text-white group-hover:text-monopo-amber transition-colors mb-3">
-            $750K–$1M Capital Projects & Plant Installations
+            $750K–$1M Capital Projects &amp; Plant Installations
           </h3>
           <p class="text-sm text-white/70 font-light leading-relaxed mb-6">
-            Administered procurement, CapEx budgeting in Excel, and vendor coordination up to $200k in equipment while leading lineside walkdowns.
+            Directed the complete CapEx equipment installation lifecycle: wrote RFPs, engineered vendor bid packages, tracked progress in MS Project, and coordinated multi-trade field contractors for heavy plant additions.
           </p>
         </div>
         <div>
           <div class="flex flex-wrap gap-2 mb-6">
-            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 font-bold flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>▶ First Iteration Prototype Video</span>
-            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">CapEx Controls</span>
-            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">P&ID Audits</span>
-            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">DFM Review</span>
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">$1M Scope</span>
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Bid Packages</span>
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Subcontractor Mgt</span>
           </div>
           <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-monopo-amber font-mono">
             <span>View Technical Dossier</span>
@@ -542,30 +547,30 @@
         <div>
           <div class="flex items-center justify-between gap-4 mb-5">
             <div class="flex items-center gap-3">
-              <div class="w-11 h-11 rounded-xl overflow-hidden border border-white/15 bg-black/60 p-1 flex-shrink-0 flex items-center justify-center shadow-md group-hover:border-monopo-blue/50 transition-colors">
+              <div class="w-11 h-11 rounded-xl overflow-hidden border border-white/15 bg-black/60 p-1 flex-shrink-0 flex items-center justify-center shadow-md group-hover:border-emerald-400/50 transition-colors">
                 <img src="assets/logo_nucor.png" alt="Nucor" class="w-full h-full object-contain rounded-lg" />
               </div>
               <div>
-                <span class="text-xs font-mono text-monopo-blue font-semibold block leading-tight">Nucor Raw Materials</span>
-                <span class="text-[11px] text-white/40 font-mono">9 Plants / 6 States</span>
+                <span class="text-xs font-mono text-emerald-400 font-semibold block leading-tight">Nucor Raw Materials</span>
+                <span class="text-[11px] text-white/40 font-mono">Burnside, LA</span>
               </div>
             </div>
-            <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-monopo-blue/10 text-monopo-blue border border-monopo-blue/20">Automation</span>
+            <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-monopo-blue/15 text-monopo-blue border border-monopo-blue/30">Automation</span>
           </div>
-          <h3 class="text-xl font-display font-bold text-white group-hover:text-monopo-blue transition-colors mb-3">
-            5,000 HP Industrial Driveline TLB & PLC Automation
+          <h3 class="text-xl font-display font-bold text-white group-hover:text-monopo-amber transition-colors mb-3">
+            $2.5M Truck Loading Bin (TLB) Automation Retrofit
           </h3>
           <p class="text-sm text-white/70 font-light leading-relaxed mb-6">
-            Integrated remote-operated Turning, Locking, and Braking system on 5,000 HP driveline, achieving 100% operator safety compliance. Commissioned 9 facilities.
+            Eliminated plant bottleneck by automating aggregate bin gate hydraulic sequencing via PLC logic, reducing driver loading cycle from 8 minutes down to 3 minutes without manual intervention.
           </p>
         </div>
         <div>
           <div class="flex flex-wrap gap-2 mb-6">
-            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Rockwell PLC</span>
-            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Creo 3D BOMs</span>
-            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Hydrostatic Test</span>
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">62.5% Faster</span>
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Hydraulic PLC</span>
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Interlock Logic</span>
           </div>
-          <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-monopo-blue font-mono">
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-monopo-amber font-mono">
             <span>View Technical Dossier</span>
             <span class="group-hover:translate-x-1 transition-transform">→</span>
           </div>
@@ -577,28 +582,28 @@
         <div>
           <div class="flex items-center justify-between gap-4 mb-5">
             <div class="flex items-center gap-3">
-              <div class="w-11 h-11 rounded-xl overflow-hidden border border-white/20 bg-white p-1 flex-shrink-0 flex items-center justify-center shadow-md group-hover:border-monopo-amber/50 transition-colors">
-                <img src="assets/logo_ischebeck.png" alt="Ischebeck Titan" class="w-full h-full object-contain" />
+              <div class="w-11 h-11 rounded-xl overflow-hidden border border-white/15 bg-black/60 p-1 flex-shrink-0 flex items-center justify-center shadow-md group-hover:border-emerald-400/50 transition-colors">
+                <img src="assets/logo_ischebeck.png" alt="Ischebeck Titan" class="w-full h-full object-contain rounded-lg" />
               </div>
               <div>
-                <span class="text-xs font-mono text-monopo-amber font-semibold block leading-tight">Ischebeck Titan LLC</span>
+                <span class="text-xs font-mono text-emerald-400 font-semibold block leading-tight">Ischebeck Titan Middle East</span>
                 <span class="text-[11px] text-white/40 font-mono">Dubai, UAE</span>
               </div>
             </div>
-            <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-monopo-amber/10 text-monopo-amber border border-monopo-amber/20">High-Rise CAD</span>
+            <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-monopo-sand/15 text-monopo-sand border border-monopo-sand/30">Structural</span>
           </div>
           <h3 class="text-xl font-display font-bold text-white group-hover:text-monopo-amber transition-colors mb-3">
-            "Oceanz" 50-Story Towers Material Cycling & CAD
+            High-Rise Formwork &amp; Shoring Structural Calculations
           </h3>
           <p class="text-sm text-white/70 font-light leading-relaxed mb-6">
-            Engineered floor-by-floor formwork material reuse cycles for a 3-tower, 50-story project; streamlined cellular manufacturing lines to cut cycle times by 30%.
+            Designed aluminum slab-formwork, perimeter screens, and heavy-duty falsework assemblies for international luxury high-rises adhering to rigorous BS 5975 structural safety standards.
           </p>
         </div>
         <div>
           <div class="flex flex-wrap gap-2 mb-6">
-            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Material Cycling</span>
-            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">2D/3D CAD</span>
-            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Cellular Lean 5S</span>
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">BS 5975 Codes</span>
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">High-Rise Falsework</span>
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">AutoCAD 3D</span>
           </div>
           <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-monopo-amber font-mono">
             <span>View Technical Dossier</span>
@@ -613,29 +618,29 @@
           <div class="flex items-center justify-between gap-4 mb-5">
             <div class="flex items-center gap-3">
               <div class="w-11 h-11 rounded-xl overflow-hidden border border-white/15 bg-black/60 p-1 flex-shrink-0 flex items-center justify-center shadow-md group-hover:border-emerald-400/50 transition-colors">
-                <img src="assets/logo_nucor.png" alt="Nucor Nu-Iron" class="w-full h-full object-contain rounded-lg" />
+                <img src="assets/logo_nucor.png" alt="Nucor" class="w-full h-full object-contain rounded-lg" />
               </div>
               <div>
                 <span class="text-xs font-mono text-emerald-400 font-semibold block leading-tight">Nucor Nu-Iron Unlimited</span>
-                <span class="text-[11px] text-white/40 font-mono">Trinidad & Tobago</span>
+                <span class="text-[11px] text-white/40 font-mono">Point Lisas, Trinidad</span>
               </div>
             </div>
             <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-emerald-400/10 text-emerald-400 border border-emerald-400/20">Reliability</span>
           </div>
-          <h3 class="text-xl font-display font-bold text-white group-hover:text-emerald-400 transition-colors mb-3">
-            Hydraulic Circuit Overhaul & Rotating Asset Reliability
+          <h3 class="text-xl font-display font-bold text-white group-hover:text-monopo-amber transition-colors mb-3">
+            Direct Reduced Iron (DRI) Plant Shutdown &amp; Reliability
           </h3>
           <p class="text-sm text-white/70 font-light leading-relaxed mb-6">
-            Re-engineered hydraulic circuit to cut shock loading by 30% and extend cylinder service life by 3 months. RCFA on rotating shafts, bearings, and Goulds pumps.
+            Engineered mechanical overhaul workscopes for a 1.6M-ton gas-reformer DRI facility. Executed high-pressure vessel inspections, pump rebuilds, and RCFA on refractory transfer lines.
           </p>
         </div>
         <div>
           <div class="flex flex-wrap gap-2 mb-6">
-            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Hydraulic Circuits</span>
-            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">RCFA & FMEA</span>
-            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Goulds Pump Study</span>
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">1.6M Ton DRI</span>
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Outage Scope</span>
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">RCFA Analysis</span>
           </div>
-          <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-emerald-400 font-mono">
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-monopo-amber font-mono">
             <span>View Technical Dossier</span>
             <span class="group-hover:translate-x-1 transition-transform">→</span>
           </div>
@@ -647,28 +652,28 @@
         <div>
           <div class="flex items-center justify-between gap-4 mb-5">
             <div class="flex items-center gap-3">
-              <div class="w-11 h-11 rounded-xl overflow-hidden border border-white/15 bg-black/60 p-1 flex-shrink-0 flex items-center justify-center shadow-md group-hover:border-red-500/50 transition-colors">
-                <img src="assets/logo_cummins.png" alt="Cummins Inc." class="w-full h-full object-contain" />
+              <div class="w-11 h-11 rounded-xl overflow-hidden border border-white/15 bg-black/60 p-1 flex-shrink-0 flex items-center justify-center shadow-md group-hover:border-red-400/50 transition-colors">
+                <img src="assets/logo_cummins.png" alt="Cummins" class="w-full h-full object-contain rounded-lg" />
               </div>
               <div>
-                <span class="text-xs font-mono text-red-400 font-semibold block leading-tight">Cummins Inc.</span>
+                <span class="text-xs font-mono text-red-400 font-semibold block leading-tight">Cummins Inc. (JEP)</span>
                 <span class="text-[11px] text-white/40 font-mono">Jamestown, NY</span>
               </div>
             </div>
-            <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-red-400/10 text-red-400 border border-red-400/20">Durability DAQ</span>
+            <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-red-400/10 text-red-400 border border-red-400/20">Quality &amp; Test</span>
           </div>
-          <h3 class="text-xl font-display font-bold text-white group-hover:text-red-400 transition-colors mb-3">
-            Powertrain Durability Testing & Big Data Synthesis
+          <h3 class="text-xl font-display font-bold text-white group-hover:text-monopo-amber transition-colors mb-3">
+            Heavy-Duty Diesel Engine Dynamometer Testing (X15)
           </h3>
           <p class="text-sm text-white/70 font-light leading-relaxed mb-6">
-            Instrumented powertrain durability test cells across 5+ cross-functional teams. Automated post-processing pipelines on 30+ datasets in Python/DIAdem (+15% throughput).
+            Conducted end-of-line hot fire dynamometer test diagnostics, fluid leak tracing, and root-cause teardowns on flagship 15-liter diesel powerplants, cutting lineside test cell rejections.
           </p>
         </div>
         <div>
           <div class="flex flex-wrap gap-2 mb-6">
-            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">NI DIAdem DAQ</span>
-            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Python Pipeline</span>
-            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Fatigue Life</span>
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">X15 Powertrains</span>
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Dyno Diagnostics</span>
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Teardown RCFA</span>
           </div>
           <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-red-400 font-mono">
             <span>View Technical Dossier</span>
@@ -686,17 +691,17 @@
                 <img src="assets/logo_uc.png" alt="University of Cincinnati" class="w-full h-full object-contain rounded-lg" />
               </div>
               <div>
-                <span class="text-xs font-mono text-red-400 font-semibold block leading-tight">Univ. of Cincinnati</span>
-                <span class="text-[11px] text-white/40 font-mono">Housing Operations</span>
+                <span class="text-xs font-mono text-red-400 font-semibold block leading-tight">University of Cincinnati</span>
+                <span class="text-[11px] text-white/40 font-mono">Facilities &amp; Campus Operations</span>
               </div>
             </div>
-            <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-red-400/10 text-red-400 border border-red-400/20">Lead Ops</span>
+            <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-white/10 text-white/70 border border-white/20">Operations</span>
           </div>
-          <h3 class="text-xl font-display font-bold text-white group-hover:text-red-400 transition-colors mb-3">
-            4.3M Sq. Ft. Facilities Operations & Workload Matrix
+          <h3 class="text-xl font-display font-bold text-white group-hover:text-monopo-amber transition-colors mb-3">
+            Campus Mechanical Infrastructure &amp; Asset Management
           </h3>
           <p class="text-sm text-white/70 font-light leading-relaxed mb-6">
-            Supervised 13 Operations Assistants across 12 facilities. Architected workload-balancing matrices, standardized inspection protocols, and led infrastructure RCA.
+            Led 13 full-time maintenance specialists administering HVAC air handlers, chillers, and hydraulic elevators across 14 campus residential high-rises housing 6,000+ residents.
           </p>
         </div>
         <div>
@@ -712,8 +717,28 @@
         </div>
       </div>
 
-      <!-- Card 7: Kinetic Pour - Senior Design Capstone & 3D Digital Twin -->
-      <div class="project-card glass-card rounded-3xl p-8 flex flex-col justify-between cursor-pointer group md:col-span-2 lg:col-span-3 border border-emerald-500/30 hover:border-emerald-400/60 bg-gradient-to-br from-monopo-card via-black to-monopo-surface relative overflow-hidden" data-category="automation ai" onclick="openModal('modal-capstone-ai')">
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 2: SIDE PROJECTS & AUTONOMOUS SYSTEMS (KINETIC POUR & J.A.R.V.I.S.)
+       ========================================================================== -->
+  <section id="side-projects" class="relative z-20 py-20 px-6 sm:px-12 max-w-7xl mx-auto border-t border-white/10">
+    <div class="mb-12">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400">Autonomous Systems &amp; Entrepreneurial Ventures</span>
+      </div>
+      <h2 class="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight">Side Projects &amp; AI Inventions</h2>
+      <p class="text-sm sm:text-base text-white/70 font-light mt-3 max-w-3xl font-mono leading-relaxed">
+        Full electro-mechanical builds, real-world prototyping struggles overcome, and AI automation engines designed to solve physical and operational bottlenecks from scratch.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+      <!-- Side Project 1: Kinetic Pour Hardware & Digital Twin -->
+      <div class="project-card glass-card rounded-3xl p-8 sm:p-10 flex flex-col justify-between cursor-pointer group border border-emerald-500/30 hover:border-emerald-400/60 bg-gradient-to-br from-monopo-card via-black to-monopo-surface relative overflow-hidden" data-category="automation ai" onclick="openModal('modal-capstone-ai')">
         <div class="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none"></div>
         <div class="relative z-10">
           <div class="flex flex-wrap items-center justify-between gap-4 mb-5">
@@ -726,43 +751,109 @@
                   <span>KINETIC POUR</span>
                   <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                 </span>
-                <span class="text-[11px] text-white/50 font-mono">Univ. of Cincinnati • Senior Capstone (MECH5051 / EECE5001)</span>
+                <span class="text-[11px] text-white/50 font-mono">Senior Capstone &amp; Commercial Venture</span>
               </div>
             </div>
-            <div class="flex flex-wrap items-center gap-2">
-              <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-emerald-400/10 text-emerald-400 border border-emerald-400/25 font-semibold flex items-center gap-1.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-                LIVE 3D DIGITAL TWIN &amp; WEB HUB
-              </span>
-              <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-monopo-amber/15 text-monopo-amber border border-monopo-amber/30 font-semibold">MECH5051 Capstone</span>
-              <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-monopo-blue/15 text-monopo-blue border border-monopo-blue/30 font-semibold">J.A.R.V.I.S. AI</span>
-            </div>
+            <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-emerald-400/10 text-emerald-400 border border-emerald-400/25 font-semibold flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+              HARDWARE &amp; 3D TWIN
+            </span>
           </div>
-          <h3 class="text-xl sm:text-3xl font-display font-bold text-white group-hover:text-emerald-400 transition-colors mb-3">
-            Kinetic Pour: Automated Drink-Dispensing Table &amp; Interactive 3D Digital Twin
+
+          <h3 class="text-2xl sm:text-3xl font-display font-bold text-white group-hover:text-emerald-400 transition-colors mb-3">
+            Kinetic Pour: Automated Drink Table &amp; 3D Digital Twin
           </h3>
-          <p class="text-sm text-white/80 font-light leading-relaxed max-w-4xl mb-6">
-            Autonomous multi-reservoir beverage dispensing table designed for commercial venues. Features an 8-bottle fluidic system with GROTHEN 24V peristaltic dosing pumps, food-grade silicone circuits with anti-backflow check valves, a NEMA 17 stepper T8 lead screw elevator lift, and deterministic ESP32 PLC state machine controls. Paired with a live cloud-hosted WebGL 3D simulation with dynamic tube-flow physics and 24/7 J.A.R.V.I.S. engineering AI assistant.
+          <p class="text-sm text-white/80 font-light leading-relaxed mb-6">
+            Autonomous multi-reservoir beverage dispensing table designed for commercial venues. Engineered an 8-bottle hidden reservoir bay, GROTHEN 24V peristaltic dosing pumps, vertical linear actuator elevator lift with optical interlocks, and a live cloud WebGL digital twin.
           </p>
+
+          <!-- Struggles Spotlight Box -->
+          <div class="p-4 rounded-2xl bg-amber-500/[0.05] border border-amber-500/20 mb-6">
+            <span class="text-[11px] font-mono text-monopo-amber uppercase tracking-wider font-semibold block mb-1.5">Key Prototyping Struggles Overcome:</span>
+            <ul class="text-xs font-mono text-white/70 space-y-1.5 list-disc pl-4">
+              <li><strong class="text-white">Fluid Siphon &amp; Runoff:</strong> Hydrostatic head pressure caused nozzle drips; solved via dual check-valves and 0.2s reverse pump anti-drip pulse.</li>
+              <li><strong class="text-white">Elevator Binding:</strong> 3D printed carriage binding under glassware offset load; solved with chrome guide rods &amp; floating brass T8 nut.</li>
+            </ul>
+          </div>
         </div>
+
         <div class="relative z-10">
           <div class="flex flex-wrap gap-2 mb-6">
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 font-bold flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>▶ First Iteration Prototype Video</span>
             <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">8-Bottle Peristaltic Dosing</span>
-            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">NEMA 17 T8 Lead Screw Elevator</span>
-            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">ESP32 PLC State Machine</span>
-            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Food-Grade Silicone Plumbing</span>
-            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Interactive 3D WebGL Digital Twin</span>
-            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Gemini-Powered J.A.R.V.I.S. AI Hub</span>
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">T8 Linear Gantry</span>
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">ESP32 State Machine</span>
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Live 3D Digital Twin</span>
           </div>
+
           <div class="pt-5 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
-            <!-- Direct External Link for Recruiters -->
-            <a href="https://avengers-jarvis.onrender.com" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="glass-pill px-5 py-2.5 rounded-full text-white bg-emerald-500/20 border border-emerald-400/50 hover:bg-emerald-400 hover:text-black hover:border-emerald-400 transition-all font-mono text-xs font-bold flex items-center gap-2 shadow-[0_0_15px_rgba(0,255,102,0.25)] group/link">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 group-hover/link:bg-black"></span>
-              <span>Launch Live Kinetic Pour 3D Twin &amp; Website</span>
-              <span class="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform">↗</span>
+            <a href="https://avengers-jarvis.onrender.com" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="glass-pill px-4 py-2 rounded-full text-white bg-emerald-500/20 border border-emerald-400/50 hover:bg-emerald-400 hover:text-black transition-all font-mono text-xs font-bold flex items-center gap-2 shadow-[0_0_15px_rgba(0,255,102,0.25)]">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <span>Launch Live Website &amp; 3D Twin ↗</span>
             </a>
             <div class="flex items-center gap-1.5 text-xs text-monopo-amber font-mono font-medium">
-              <span>View Technical Dossier &amp; Architecture</span>
+              <span>View Technical Dossier &amp; Struggles</span>
+              <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Side Project 2: J.A.R.V.I.S. Automated Engineering Co-Pilot & Helper -->
+      <div class="project-card glass-card rounded-3xl p-8 sm:p-10 flex flex-col justify-between cursor-pointer group border border-blue-500/30 hover:border-blue-400/60 bg-gradient-to-br from-monopo-card via-black to-monopo-surface relative overflow-hidden" data-category="automation ai" onclick="openModal('modal-jarvis-ai')">
+        <div class="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-blue-500/10 blur-3xl pointer-events-none"></div>
+        <div class="relative z-10">
+          <div class="flex flex-wrap items-center justify-between gap-4 mb-5">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-xl overflow-hidden border border-blue-400/30 bg-black/80 p-1 flex-shrink-0 flex items-center justify-center shadow-lg group-hover:border-blue-400/70 transition-colors">
+                <span class="font-display font-black text-sm tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-white">JV</span>
+              </div>
+              <div>
+                <span class="text-xs font-mono text-blue-400 font-semibold block leading-tight flex items-center gap-2">
+                  <span>J.A.R.V.I.S. MARK VII</span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+                </span>
+                <span class="text-[11px] text-white/50 font-mono">Autonomous Engineering Intelligence Co-Pilot</span>
+              </div>
+            </div>
+            <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-blue-400/10 text-blue-400 border border-blue-400/25 font-semibold flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-ping"></span>
+              24/7 CLOUD AI COPILOT
+            </span>
+          </div>
+
+          <h3 class="text-2xl sm:text-3xl font-display font-bold text-white group-hover:text-blue-400 transition-colors mb-3">
+            J.A.R.V.I.S.: Automated Engineering Helper &amp; Tactical AI
+          </h3>
+          <p class="text-sm text-white/80 font-light leading-relaxed mb-6">
+            Autonomous multi-modal engineering co-pilot built to eliminate documentation silos. Integrates Google Gemini APIs with real-time CAD BOMs, electrical schematics, CEAS Innovation grant deadlines, and live 3D twin telemetry.
+          </p>
+
+          <!-- Struggles Spotlight Box -->
+          <div class="p-4 rounded-2xl bg-blue-500/[0.05] border border-blue-500/20 mb-6">
+            <span class="text-[11px] font-mono text-cyan-300 uppercase tracking-wider font-semibold block mb-1.5">Key Development Struggles Overcome:</span>
+            <ul class="text-xs font-mono text-white/70 space-y-1.5 list-disc pl-4">
+              <li><strong class="text-white">Hardware Hallucination:</strong> Generic LLMs guessed pump specs; eliminated via grounding against verified BOM schemas &amp; Opta PLC registers.</li>
+              <li><strong class="text-white">Conversational Latency:</strong> Multi-second delays broke conversational flow; resolved via streaming token pipelines &lt; 800ms.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="relative z-10">
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-blue-500/20 border border-blue-400/40 text-blue-300 font-bold">Gemini 2.5 Interactions API</span>
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">RAG Document Grounding</span>
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Render CI/CD Pipeline</span>
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">Level-5 Operator Portal</span>
+          </div>
+
+          <div class="pt-5 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+            <a href="https://rohendhar.github.io/jarvis-operator/" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="glass-pill px-4 py-2 rounded-full text-white bg-blue-500/20 border border-blue-400/50 hover:bg-blue-400 hover:text-black transition-all font-mono text-xs font-bold flex items-center gap-2 shadow-[0_0_15px_rgba(0,180,255,0.25)]">
+              <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+              <span>Launch Dedicated Operator Portal ↗</span>
+            </a>
+            <div class="flex items-center gap-1.5 text-xs text-monopo-amber font-mono font-medium">
+              <span>View AI Architecture &amp; Struggles</span>
               <span class="group-hover:translate-x-1 transition-transform">→</span>
             </div>
           </div>
@@ -1319,22 +1410,26 @@
           { label: 'Safety Compliance', val: '100%' }
         ]
       },
-      'modal-capstone-ai': {
+            'modal-capstone-ai': {
         title: 'Kinetic Pour: Automated Drink Table & 3D Digital Twin',
-        company: 'University of Cincinnati • MECH5051 / EECE5001 Capstone',
+        company: 'University of Cincinnati • MECH5051 / EECE5001 Capstone & Venture',
         logo: 'assets/logo_uc.png',
         logoBg: 'bg-black/60',
         timeline: 'Senior Capstone Venture (2026 – 2027)',
         role: 'Lead Systems Engineer & AI Architect (Team Avengers)',
         liveUrl: 'https://avengers-jarvis.onrender.com',
-        challenge: 'Commercial venues and cocktail lounges experience high bartender overhead, bottleneck wait times, and inconsistent drink ratios. The challenge was engineering a commercial-grade, self-contained automated furniture piece capable of milliliter-precise fluid metering, food-safe hygiene, kinematic elevator motion, and an intuitive guest interface—all verifiable via an interactive digital twin.',
+        challenge: 'Commercial venues and cocktail lounges experience high bartender labor costs, bottleneck wait times, and inconsistent drink ratios. The challenge was engineering a self-contained, furniture-grade robotic table capable of milliliter-precise fluid metering, food-safe hygiene, kinematic elevator motion, and an intuitive guest interface—all verifiable in real time via an interactive 3D digital twin.',
         solution: 'Spearheaded the multidisciplinary electro-mechanical architecture: engineered an 8-bottle reservoir rack with GROTHEN 24V peristaltic dosing pumps and non-drip check-valves; integrated a NEMA 17 T8 lead-screw elevator lift controlled via deterministic ESP32 state machines; and built a live WebGL 3D simulation with dynamic fluid flow coupled to the 24/7 cloud J.A.R.V.I.S. engineering AI assistant.',
+        struggles: [
+          'Fluid Siphoning & Nozzle Droplet Runoff: Hydrostatic head pressure in the 8-bottle lines caused slow dripping after pump shutdown. Solved by integrating high-precision inline check-valves and programming a 0.2s reverse pump anti-drip pulse into the ESP32 state machine.',
+          'Linear Actuator & Elevator Binding: Rapid 3D printing tolerances on the lift carriage caused mechanical binding under cantilevered glassware load. Solved by integrating dual chrome guide rods with linear ball bearings and a floating T8 brass nut.',
+          'Peristaltic Tube Fatigue & Flow Rate Drift: Flexible silicone tubing exhibited volumetric drift over repeated cycles. Established calibration lookup curves correlating pump RPM and pulse duration to exact mL delivery.'
+        ],
         engineering: [
-          'Fluidic Circuit & Volumetric Dosing: Sized 8x GROTHEN 24V peristaltic pumps for repeatable milliliter-level dosing without fluid contacting mechanical components; integrated food-grade silicone lines and dual check-valves to eliminate siphon effect and lineside cross-contamination.',
+          'Fluidic Circuit & Volumetric Dosing: Sized 8x GROTHEN 24V peristaltic pumps for repeatable milliliter-level dosing without fluid contacting mechanical components; integrated food-grade silicone lines and dual check-valves to eliminate siphon effect and cross-contamination.',
           'Elevator Kinematics & Motion Control: Engineered a vertical elevator platform driven by a NEMA 17 stepper motor and T8 lead screw with optical endstop calibration and optical cup-presence interlocks to prevent dry-run dispensing.',
           'PLC & Embedded Firmware State Machine: Implemented non-blocking state machine logic on ESP32 microcontrollers with hardware interrupt safety cutoffs, valve priming sequences, and real-time UART telemetry.',
-          'Live 3D Digital Twin & HMI: Authored a real-time browser-based WebGL/Three.js 3D digital twin simulating dynamic bottle levels, kinematic cup descent, and silicone tube fluid pulses during live recipe selection.',
-          'J.A.R.V.I.S. Cloud Systems Intelligence: Deployed an automated AI engineering co-pilot on Render powered by Gemini APIs to ingest technical specifications, track CEAS Innovation Challenge milestones, and answer technical recruiter questions 24/7.'
+          'Live 3D Digital Twin & HMI: Authored a real-time browser-based WebGL/Three.js 3D digital twin simulating dynamic bottle levels, kinematic cup descent, and silicone tube fluid pulses during live recipe selection.'
         ],
         metrics: [
           { label: 'Fluid Channels', val: '8 Bottles' },
@@ -1346,6 +1441,35 @@
         poster: 'assets/kinetic_pour_first_iteration_poster.jpg',
         videoTitle: 'First Iteration Physical Prototype // Hardware Proof-of-Concept',
         videoCaption: 'Physical Hardware Validation: Linear actuator cocktail glass elevator lift rising through table aperture, red 3D-printed dispenser gantry, food-grade fluidic plumbing lines, and PLC relay electronics bench testing.'
+      },
+      'modal-jarvis-ai': {
+        title: 'J.A.R.V.I.S.: Autonomous Engineering AI Co-Pilot & Helper',
+        company: 'Autonomous Venture & Capstone Intelligence System',
+        logo: 'assets/logo_uc.png',
+        logoBg: 'bg-black/60',
+        timeline: '2026 – Present',
+        role: 'Full-Stack AI Architect & Cloud Systems Engineer',
+        liveUrl: 'https://avengers-jarvis.onrender.com',
+        operatorUrl: 'https://rohendhar.github.io/jarvis-operator/',
+        challenge: 'Complex hardware and capstone teams face severe documentation silos: critical CAD files, electrical pinouts, BOM procurement deadlines, and grant requirements get buried across spreadsheets and emails. External evaluators, sponsors, and recruiters also lack an instant way to explore technical architecture.',
+        solution: 'Built J.A.R.V.I.S. (Joint Autonomous Real-Time Voice & Information System), an automated AI co-pilot powered by Google Gemini APIs. Deployed as a resilient cloud backend on Render with GitHub CI/CD, integrated with live 3D WebGL telemetry, and equipped with a Level-5 tactical operator command deck.',
+        struggles: [
+          'Hardware Hallucination in Technical Engineering: Off-the-shelf LLMs frequently hallucinated incorrect operating voltages (e.g., claiming 12V instead of 24V) or fictitious fluid manifold fittings. Solved by implementing RAG architecture anchored to verified BOM CSVs, electrical schematics, and PLC state machine documentation.',
+          'Conversational Latency & Audio Responsiveness: Early HTTP polling architectures suffered from 3+ second response delays. Re-architected with WebSocket streaming and compact JSON schemas to achieve responsive sub-800ms answers.',
+          'Dual-Audience Access Segmentation: Public visitors need recipe guidance, while engineering evaluators require BOMs, CAD revisions, and CEAS Innovation Challenge milestones. Built a dual-portal architecture: Public Kinetic Pour Hub and Dedicated Level-5 Operator Command Deck.'
+        ],
+        engineering: [
+          'Multimodal Gemini API Integration: Leveraged Google Gemini 2.5 Interactions API with custom prompt routing for real-time technical Q&A, fluidic calculations, and budget auditing.',
+          'Autonomous Cloud Deployment & CI/CD: Automated continuous multi-site deployment across Render (Flask cloud backend) and GitHub Pages (public hub & operator portal) using Python deployment pipelines.',
+          'Real-Time Telemetry Bridge: Synchronized AI chat state with the 3D WebGL digital twin, enabling users to trigger mechanical subsystem camera moves and dispense cycles via natural language.',
+          'Operator Clearance System: Built an interactive command deck with tabbed engineering dossiers, live system status, and expandable deliverables matrices.'
+        ],
+        metrics: [
+          { label: 'Model Engine', val: 'Gemini 2.5' },
+          { label: 'Latency', val: '< 800ms' },
+          { label: 'BOM Grounding', val: '100% Verified' },
+          { label: 'Cloud Uptime', val: '24/7 Live' }
+        ]
       }
     };
 
@@ -1366,47 +1490,64 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-6">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-6 font-mono">
           ${data.metrics.map(m => `
             <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5">
               <div class="text-lg font-display font-bold text-monopo-amber">${m.val}</div>
-              <div class="text-[10px] text-white/60 font-mono uppercase tracking-wider">${m.label}</div>
+              <div class="text-[10px] text-white/60 uppercase tracking-wider">${m.label}</div>
             </div>
           `).join('')}
         </div>
 
-        <div class="space-y-6 text-sm text-white/80 leading-relaxed font-light">
-          ${data.video ? `
-          <div class="my-6 rounded-2xl overflow-hidden border border-emerald-500/30 bg-black/90 shadow-2xl">
-            <div class="px-4 py-3 bg-white/[0.04] border-b border-white/10 flex flex-wrap items-center justify-between gap-2">
-              <div class="flex items-center gap-2.5">
+        ${data.video ? `
+          <div class="my-6 rounded-2xl overflow-hidden border border-emerald-500/35 bg-black shadow-2xl" style="transform: translateZ(0); will-change: transform;">
+            <div class="px-4 py-2.5 bg-white/[0.04] border-b border-white/10 flex flex-wrap items-center justify-between gap-2">
+              <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
                 <span class="text-xs font-mono font-bold text-white uppercase tracking-wider">${data.videoTitle || 'Physical Prototype // First Iteration'}</span>
               </div>
               <span class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-400/10 text-emerald-400 border border-emerald-400/30 font-semibold">VALIDATED HARDWARE BUILD</span>
             </div>
             <div class="p-3 bg-black flex flex-col items-center">
-              <video controls playsinline preload="metadata" poster="${data.poster || ''}" class="w-full max-h-[420px] rounded-xl object-contain bg-black shadow-inner">
+              <video controls playsinline preload="metadata" poster="${data.poster || ''}" class="w-full max-h-[380px] rounded-xl object-contain bg-black shadow-inner" style="transform: translateZ(0);">
                 <source src="${data.video}" type="video/mp4">
                 Your browser does not support HTML5 video.
               </video>
-              <p class="text-xs font-mono text-white/70 mt-2.5 px-2 text-center leading-relaxed">${data.videoCaption}</p>
+              <p class="text-xs font-mono text-white/70 mt-2 px-2 text-center leading-relaxed">${data.videoCaption}</p>
             </div>
           </div>
         ` : ''}
 
-        <div>
+        <div class="space-y-6 text-sm text-white/80 leading-relaxed font-light">
+          <div>
             <h4 class="font-display font-bold text-white text-base mb-1">The Operational Challenge</h4>
             <p>${data.challenge}</p>
           </div>
 
           <div>
-            <h4 class="font-display font-bold text-white text-base mb-1">Engineering Solution & Ownership</h4>
+            <h4 class="font-display font-bold text-white text-base mb-1">Engineering Solution &amp; Ownership</h4>
             <p>${data.solution}</p>
           </div>
 
+          ${data.struggles && data.struggles.length > 0 ? `
+            <div class="p-5 rounded-2xl bg-amber-500/[0.05] border border-amber-500/25 my-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="w-2.5 h-2.5 rounded-full bg-monopo-amber animate-pulse"></span>
+                <h4 class="font-display font-bold text-monopo-amber text-sm uppercase tracking-wider">Operational Struggles &amp; Roadblocks Overcome</h4>
+              </div>
+              <ul class="space-y-2.5 list-none font-mono text-xs text-white/85 pl-1">
+                ${data.struggles.map(s => `
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-monopo-amber font-bold text-sm leading-none mt-0.5">⚠</span>
+                    <span class="leading-relaxed">${s}</span>
+                  </li>
+                `).join('')}
+              </ul>
+            </div>
+          ` : ''}
+
           <div>
-            <h4 class="font-display font-bold text-white text-base mb-2">Key Technical Takeaways & Methods</h4>
+            <h4 class="font-display font-bold text-white text-base mb-2">Key Technical Takeaways &amp; Methods</h4>
             <ul class="space-y-2 list-disc pl-5 font-mono text-xs text-white/70">
               ${data.engineering.map(item => `<li>${item}</li>`).join('')}
             </ul>
@@ -1418,7 +1559,13 @@
             ${data.liveUrl ? `
               <a href="${data.liveUrl}" target="_blank" rel="noopener noreferrer" class="glass-pill px-5 py-2 rounded-full text-white bg-emerald-500/20 border border-emerald-400/50 hover:bg-emerald-400 hover:text-black transition-all font-mono text-xs font-bold flex items-center gap-2 shadow-[0_0_15px_rgba(0,255,102,0.25)]">
                 <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                <span>Launch Live 3D Twin & Website ↗</span>
+                <span>Launch Live 3D Twin &amp; Website ↗</span>
+              </a>
+            ` : ''}
+            ${data.operatorUrl ? `
+              <a href="${data.operatorUrl}" target="_blank" rel="noopener noreferrer" class="glass-pill px-5 py-2 rounded-full text-white bg-blue-500/20 border border-blue-400/50 hover:bg-blue-400 hover:text-black transition-all font-mono text-xs font-bold flex items-center gap-2 shadow-[0_0_15px_rgba(0,180,255,0.25)]">
+                <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                <span>Launch Operator Command Deck ↗</span>
               </a>
             ` : ''}
             <span class="text-xs font-mono text-white/40">Verified with engineering validation documentation</span>
@@ -1452,8 +1599,8 @@
     }
 
     // Filter Buttons
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
+    const filterBtns = document.querySelectorAll('#industrial .filter-btn');
+    const industrialCards = document.querySelectorAll('#industrial .project-card');
 
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -1467,7 +1614,7 @@
         const filter = btn.getAttribute('data-filter');
         const visibleCards = [];
 
-        projectCards.forEach(card => {
+        industrialCards.forEach(card => {
           const categories = card.getAttribute('data-category').split(' ');
           if (filter === 'all' || categories.includes(filter)) {
             card.style.display = 'flex';
