@@ -525,6 +525,7 @@
         </div>
         <div>
           <div class="flex flex-wrap gap-2 mb-6">
+            <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 font-bold flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>▶ First Iteration Prototype Video</span>
             <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">CapEx Controls</span>
             <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">P&ID Audits</span>
             <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/80">DFM Review</span>
@@ -1340,7 +1341,11 @@
           { label: 'Dosing Accuracy', val: '±1.5 mL' },
           { label: 'Lift Kinematics', val: 'T8 / NEMA 17' },
           { label: 'Cloud Uptime', val: '24/7 Live' }
-        ]
+        ],
+        video: 'assets/kinetic_pour_first_iteration.mp4',
+        poster: 'assets/kinetic_pour_first_iteration_poster.jpg',
+        videoTitle: 'First Iteration Physical Prototype // Hardware Proof-of-Concept',
+        videoCaption: 'Physical Hardware Validation: Linear actuator cocktail glass elevator lift rising through table aperture, red 3D-printed dispenser gantry, food-grade fluidic plumbing lines, and PLC relay electronics bench testing.'
       }
     };
 
@@ -1371,7 +1376,26 @@
         </div>
 
         <div class="space-y-6 text-sm text-white/80 leading-relaxed font-light">
-          <div>
+          ${data.video ? `
+          <div class="my-6 rounded-2xl overflow-hidden border border-emerald-500/30 bg-black/90 shadow-2xl">
+            <div class="px-4 py-3 bg-white/[0.04] border-b border-white/10 flex flex-wrap items-center justify-between gap-2">
+              <div class="flex items-center gap-2.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="text-xs font-mono font-bold text-white uppercase tracking-wider">${data.videoTitle || 'Physical Prototype // First Iteration'}</span>
+              </div>
+              <span class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-400/10 text-emerald-400 border border-emerald-400/30 font-semibold">VALIDATED HARDWARE BUILD</span>
+            </div>
+            <div class="p-3 bg-black flex flex-col items-center">
+              <video controls playsinline preload="metadata" poster="${data.poster || ''}" class="w-full max-h-[420px] rounded-xl object-contain bg-black shadow-inner">
+                <source src="${data.video}" type="video/mp4">
+                Your browser does not support HTML5 video.
+              </video>
+              <p class="text-xs font-mono text-white/70 mt-2.5 px-2 text-center leading-relaxed">${data.videoCaption}</p>
+            </div>
+          </div>
+        ` : ''}
+
+        <div>
             <h4 class="font-display font-bold text-white text-base mb-1">The Operational Challenge</h4>
             <p>${data.challenge}</p>
           </div>
